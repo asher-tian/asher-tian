@@ -52,21 +52,15 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
 <text x="44" y="534" font-size="11" font-weight="400" fill="#e6edf3">Developer tooling · CLI · reporting</text>
 <text x="44" y="562" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="1.1">WORKSTATION</text>
 <text x="44" y="582" font-size="11" font-weight="400" fill="#e6edf3">macOS · Windows</text>
-<text x="44" y="610" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="1.1">AI TOOLCHAIN</text>
-<text x="44" y="630" font-size="11" font-weight="400" fill="#e6edf3">Copilot · Claude Code</text>
-<text x="44" y="654" font-size="8" font-weight="500" fill="#8b949e" letter-spacing="0.8">STATUS / PROFILE GENERATED</text>
+<text x="44" y="610" font-size="8" font-weight="500" fill="#8b949e" letter-spacing="0.8">PROFILE / GENERATED</text>
 <text x="432" y="99" font-size="15" font-weight="700" fill="#e6edf3" letter-spacing="0.8">SYSTEM PROFILE</text>
 <text x="1154" y="98" font-size="9" font-weight="600" fill="#8b949e" text-anchor="end" letter-spacing="1.0">LIVE GITHUB TELEMETRY</text>
 <text x="432" y="143" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.7">ROLE</text>
 <text x="535" y="143" font-size="11" font-weight="500" fill="#e6edf3">Software developer</text>
 <text x="432" y="166" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.7">FOCUS</text>
 <text x="535" y="166" font-size="11" font-weight="500" fill="#e6edf3">Developer tooling · CLI · workflow · reporting</text>
-<text x="432" y="189" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.7">STACK</text>
-<text x="535" y="189" font-size="11" font-weight="500" fill="#e6edf3">Python · Go · Vue · JavaScript</text>
-<text x="432" y="212" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.7">ENV</text>
-<text x="535" y="212" font-size="11" font-weight="500" fill="#e6edf3">macOS · Windows</text>
-<text x="432" y="235" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.7">TOOLS</text>
-<text x="535" y="235" font-size="11" font-weight="500" fill="#e6edf3">VS Code · PyCharm · iTerm2 · Copilot · Claude Code</text>
+<text x="432" y="189" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.7">ENV</text>
+<text x="535" y="189" font-size="11" font-weight="500" fill="#e6edf3">macOS · Windows</text>
 <rect x="432" y="268" width="172" height="91" rx="10" fill="#0f141b" stroke="#30363d"/>
 <text x="446" y="291" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.6">PUBLIC REPOS</text>
 <text x="446" y="326" font-size="25" font-weight="700" fill="#e6edf3">3</text>
@@ -81,7 +75,7 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
 <text x="814" y="346" font-size="8" font-weight="400" fill="#8b949e">GitHub followers</text>
 <rect x="984" y="268" width="172" height="91" rx="10" fill="#0f141b" stroke="#30363d"/>
 <text x="998" y="291" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.6">PUBLIC COMMITS</text>
-<text x="998" y="326" font-size="25" font-weight="700" fill="#e6edf3">121</text>
+<text x="998" y="326" font-size="25" font-weight="700" fill="#e6edf3">123</text>
 <text x="998" y="346" font-size="8" font-weight="400" fill="#8b949e">matched by GitHub author</text>
 <rect x="432" y="375" width="350" height="168" rx="10" fill="#0f141b" stroke="#30363d"/>
 <text x="450" y="402" font-size="10" font-weight="700" fill="#e6edf3" letter-spacing="0.5">PUBLIC ACTIVITY // 30 DAYS</text>
@@ -145,5 +139,5 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
 <text x="690" y="630" font-size="9" font-weight="400" fill="#8b949e">★ 0   ·   Jinja</text>
 <text x="930" y="609" font-size="11" font-weight="600" fill="#79c0ff">dev-env</text>
 <text x="930" y="630" font-size="9" font-weight="400" fill="#8b949e">★ 0   ·   PowerShell</text>
-<text x="432" y="665" font-size="8" font-weight="500" fill="#8b949e" letter-spacing="0.5">PUBLIC DATA ONLY  ·  UPDATED 2026-11-11 03:18 UTC</text>
+<text x="432" y="665" font-size="8" font-weight="500" fill="#8b949e" letter-spacing="0.5">PUBLIC DATA ONLY  ·  UPDATED 2026-11-11 03:36 UTC</text>
 </svg>
