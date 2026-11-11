@@ -9,7 +9,6 @@ import sys
 from collections import Counter
 from datetime import date, datetime, timedelta, timezone
 from html import escape
-from io import BytesIO
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote
@@ -19,9 +18,8 @@ ROOT = Path(__file__).resolve().parents[1]
 USERNAME = os.getenv("GITHUB_USERNAME", "asher-tian")
 API_ROOT = "https://api.github.com"
 TOKEN = os.getenv("GITHUB_TOKEN")
-AVATAR_WIDTH = 48
-AVATAR_HEIGHT = 26
-ASCII_CHARS = "@%#*+=-:. "
+AVATAR_WIDTH = 34
+AVATAR_HEIGHT = 37
 
 
 def request_json(url: str):
@@ -176,45 +174,18 @@ def fallback_avatar() -> list[str]:
     return canvas
 
 
-def avatar_to_ascii(avatar_url: str | None) -> list[str]:
-    if not avatar_url:
+def load_ascii_portrait() -> list[str]:
+    """Load the privacy-preserving ASCII portrait committed to the repository."""
+    portrait_path = ROOT / "assets" / "family-portrait.ascii"
+    if not portrait_path.exists():
         return fallback_avatar()
 
-    try:
-        from PIL import Image, ImageOps
-
-        request = Request(
-            avatar_url,
-            headers={"User-Agent": f"{USERNAME}-profile-readme"},
+    lines = portrait_path.read_text(encoding="utf-8").splitlines()
+    if len(lines) != AVATAR_HEIGHT:
+        raise ValueError(
+            f"Expected {AVATAR_HEIGHT} ASCII portrait rows, found {len(lines)}"
         )
-        with urlopen(request, timeout=20) as response:
-            image_bytes = response.read()
-
-        with Image.open(BytesIO(image_bytes)) as image:
-            image = ImageOps.fit(
-                image.convert("RGB"),
-                (AVATAR_WIDTH, AVATAR_HEIGHT),
-                centering=(0.5, 0.5),
-            )
-            grayscale = ImageOps.grayscale(image)
-            pixels = list(grayscale.getdata())
-
-        return [
-            "".join(
-                ASCII_CHARS[
-                    min(
-                        len(ASCII_CHARS) - 1,
-                        round(pixel / 255 * (len(ASCII_CHARS) - 1)),
-                    )
-                ]
-                for pixel in pixels[row * AVATAR_WIDTH : (row + 1) * AVATAR_WIDTH]
-            )
-            for row in range(AVATAR_HEIGHT)
-        ]
-    except Exception as exc:
-        print(f"Warning: avatar conversion failed; using fallback art ({exc})", file=sys.stderr)
-        return fallback_avatar()
-
+    return [line[:AVATAR_WIDTH].ljust(AVATAR_WIDTH) for line in lines]
 
 def collect_data() -> dict:
     profile = fetch_profile()
@@ -248,7 +219,7 @@ def collect_data() -> dict:
     return {
         "name": profile.get("name") or USERNAME,
         "username": profile.get("login") or USERNAME,
-        "avatar": avatar_to_ascii(profile.get("avatar_url")),
+        "avatar": load_ascii_portrait(),
         "public_repos": int(profile.get("public_repos", len(repositories))),
         "stars": sum(int(repo.get("stargazers_count", 0)) for repo in repositories),
         "followers": int(profile.get("followers", 0)),
@@ -309,7 +280,7 @@ def render_svg(theme: str, data: dict) -> str:
         '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">',
         '<style>',
         'text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}',
-        '.ascii{white-space:pre;font-size:8.4px;letter-spacing:0.15px;}',
+        '.ascii{white-space:pre;font-size:7.5px;letter-spacing:0px;}',
         '</style>',
         f'<rect width="1200" height="700" rx="18" fill="{c["background"]}"/>',
         f'<rect x="24" y="16" width="1152" height="36" rx="9" fill="{c["panel"]}" stroke="{c["border"]}"/>',
@@ -339,11 +310,11 @@ def render_svg(theme: str, data: dict) -> str:
     # Left identity panel and ASCII portrait.
     text(44, 98, "IDENTITY // 001", 10, c["muted"], 700, spacing=1.2)
     parts.append(
-        f'<text x="44" y="130" class="ascii" xml:space="preserve" fill="{c["accent"]}">'
+        f'<text x="130" y="124" class="ascii" xml:space="preserve" fill="{c["accent"]}">'
     )
     for index, line in enumerate(data["avatar"]):
-        y = 130 + index * 10.5
-        parts.append(f'<tspan x="44" y="{y:.1f}">{escape(line)}</tspan>')
+        y = 124 + index * 7.4
+        parts.append(f'<tspan x="130" y="{y:.1f}">{escape(line)}</tspan>')
     parts.append("</text>")
     parts.append(f'<line x1="44" y1="414" x2="369" y2="414" stroke="{c["border"]}"/>')
 
