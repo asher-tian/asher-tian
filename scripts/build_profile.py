@@ -6,7 +6,7 @@ from __future__ import annotations
 import json
 import os
 import sys
-from datetime import date, datetime, timedelta, timezone
+from datetime import datetime, timezone
 from html import escape
 from io import BytesIO
 from pathlib import Path
@@ -47,28 +47,6 @@ def optional_json(url: str):
         return None
 
 
-def request_graphql(query: str, variables: dict):
-    if not TOKEN:
-        raise RuntimeError("GITHUB_TOKEN is required for the contribution calendar")
-    payload = json.dumps({"query": query, "variables": variables}).encode("utf-8")
-    request = Request(
-        "https://api.github.com/graphql",
-        data=payload,
-        headers={
-            "Accept": "application/vnd.github+json",
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {TOKEN}",
-            "User-Agent": f"{USERNAME}-profile-readme",
-        },
-        method="POST",
-    )
-    with urlopen(request, timeout=30) as response:
-        result = json.loads(response.read().decode("utf-8"))
-    if result.get("errors"):
-        raise RuntimeError("; ".join(error.get("message", "GraphQL error") for error in result["errors"]))
-    return result["data"]
-
-
 def fetch_profile() -> dict:
     return request_json(f"{API_ROOT}/users/{quote(USERNAME)}")
 
@@ -85,48 +63,6 @@ def fetch_repositories() -> list[dict]:
         if len(batch) < 100:
             break
     return repositories
-
-
-def fetch_contribution_calendar() -> dict | None:
-    today = datetime.now(timezone.utc).date()
-    start = today - timedelta(days=364)
-    end = today + timedelta(days=1)
-    query = """
-    query($login: String!, $from: DateTime!, $to: DateTime!) {
-      user(login: $login) {
-        contributionsCollection(
-          from: $from
-          to: $to
-        ) {
-          contributionCalendar {
-            totalContributions
-            weeks {
-              contributionDays {
-                date
-                contributionCount
-              }
-            }
-          }
-        }
-      }
-    }
-    """
-    try:
-        data = request_graphql(
-            query,
-            {
-                "login": USERNAME,
-                "from": f"{start.isoformat()}T00:00:00Z",
-                "to": f"{end.isoformat()}T00:00:00Z",
-            },
-        )
-        user = data.get("user")
-        if not user:
-            raise RuntimeError(f"GitHub user not found: {USERNAME}")
-        return user["contributionsCollection"]["contributionCalendar"]
-    except (HTTPError, URLError, TimeoutError, ValueError, RuntimeError, KeyError) as exc:
-        print(f"Warning: contribution calendar unavailable: {exc}", file=sys.stderr)
-        return None
 
 
 def fallback_avatar() -> list[str]:
@@ -199,7 +135,6 @@ def avatar_to_ascii(avatar_url: str | None) -> list[str]:
 def collect_data() -> dict:
     profile = fetch_profile()
     repositories = fetch_repositories()
-    calendar = fetch_contribution_calendar()
 
     return {
         "name": profile.get("name") or USERNAME,
@@ -209,8 +144,7 @@ def collect_data() -> dict:
         "public_repos": int(profile.get("public_repos", len(repositories))),
         "stars": sum(int(repo.get("stargazers_count", 0)) for repo in repositories),
         "followers": int(profile.get("followers", 0)),
-        "contributions": calendar.get("totalContributions") if calendar else None,
-        "weeks": calendar.get("weeks", []) if calendar else [],
+        "following": int(profile.get("following", 0)),
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
     }
 
@@ -219,18 +153,6 @@ def number(value) -> str:
     if value is None:
         return "—"
     return f"{int(value):,}"
-
-
-def contribution_level(count: int) -> int:
-    if count <= 0:
-        return 0
-    if count == 1:
-        return 1
-    if count <= 3:
-        return 2
-    if count <= 6:
-        return 3
-    return 4
 
 
 def render_svg(theme: str, data: dict) -> str:
@@ -243,7 +165,6 @@ def render_svg(theme: str, data: dict) -> str:
             "text": "#e6edf3",
             "muted": "#8b949e",
             "accent": "#7ee787",
-            "heat": ["#21262d", "#0e4429", "#006d32", "#26a641", "#39d353"],
         }
     else:
         colors = {
@@ -254,18 +175,17 @@ def render_svg(theme: str, data: dict) -> str:
             "text": "#1f2328",
             "muted": "#656d76",
             "accent": "#1a7f37",
-            "heat": ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
         }
 
     c = colors
     parts = [
         '<?xml version="1.0" encoding="UTF-8"?>',
-        '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">',
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="550" viewBox="0 0 1200 550">',
         '<style>',
         'text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}',
         '.ascii{white-space:pre;font-size:8.4px;letter-spacing:0px;}',
         '</style>',
-        f'<rect width="1200" height="760" rx="18" fill="{c["background"]}"/>',
+        f'<rect width="1200" height="550" rx="18" fill="{c["background"]}"/>',
         f'<rect x="24" y="16" width="1152" height="36" rx="9" fill="{c["panel"]}" stroke="{c["border"]}"/>',
         f'<circle cx="43" cy="34" r="5" fill="#ffa657"/>',
         f'<circle cx="61" cy="34" r="5" fill="{c["accent"]}"/>',
@@ -315,7 +235,7 @@ def render_svg(theme: str, data: dict) -> str:
         ("PUBLIC REPOSITORIES", number(data["public_repos"]), "owned public repositories"),
         ("TOTAL STARS", number(data["stars"]), "across owned public repositories"),
         ("FOLLOWERS", number(data["followers"]), "GitHub followers"),
-        ("CONTRIBUTIONS", number(data["contributions"]), "public · last 12 months"),
+        ("FOLLOWING", number(data["following"]), "following on GitHub"),
     ]
     metric_x = [24, 318, 612, 906]
     for index, (label, value, note) in enumerate(metrics):
@@ -327,62 +247,9 @@ def render_svg(theme: str, data: dict) -> str:
         text(x + 18, 469, value, 27, c["text"], 700)
         text(x + 18, 487, note, 8, c["muted"], 400)
 
-    # One-year GitHub contribution calendar.
-    parts.append(
-        f'<rect x="24" y="520" width="1152" height="190" rx="11" fill="{c["panel"]}" stroke="{c["border"]}"/>'
-    )
-    text(44, 550, "CONTRIBUTION ACTIVITY // LAST 12 MONTHS", 10, c["text"], 700, spacing=0.55)
-    contribution_total = (
-        "unavailable" if data["contributions"] is None
-        else f'{number(data["contributions"])} public contributions'
-    )
-    text(1154, 550, contribution_total, 9, c["muted"], 500, "end")
-
-    weeks = data["weeks"]
-    cell_size = 11
-    gap = 3
-    step = cell_size + gap
-    grid_width = max(0, len(weeks) * step - gap)
-    start_x = (1200 - grid_width) / 2 if weeks else 230
-    start_y = 590
-
-    previous_month = None
-    for week_index, week in enumerate(weeks):
-        days = week.get("contributionDays", [])
-        if days:
-            try:
-                first_day = date.fromisoformat(days[0]["date"])
-                month_key = (first_day.year, first_day.month)
-                if month_key != previous_month:
-                    text(start_x + week_index * step, 578, first_day.strftime("%b").upper(), 8, c["muted"])
-                    previous_month = month_key
-            except (KeyError, ValueError):
-                pass
-
-        for day_index, day in enumerate(days):
-            count = int(day.get("contributionCount", 0))
-            level = contribution_level(count)
-            x = start_x + week_index * step
-            y = start_y + day_index * step
-            parts.append(
-                f'<rect x="{x:.1f}" y="{y:.1f}" width="{cell_size}" height="{cell_size}" rx="2" fill="{c["heat"][level]}"/>'
-            )
-
-    if not weeks:
-        text(230, 635, "Contribution calendar unavailable", 11, c["muted"])
-
-    # Activity intensity legend.
-    legend_y = 696
-    text(924, legend_y + 8, "LESS", 8, c["muted"])
-    for index, color in enumerate(c["heat"]):
-        x = 960 + index * 15
-        parts.append(
-            f'<rect x="{x}" y="{legend_y}" width="10" height="10" rx="2" fill="{color}"/>'
-        )
-    text(1042, legend_y + 8, "MORE", 8, c["muted"])
-
-    text(24, 744, "PUBLIC CONTRIBUTIONS ONLY  ·  UPDATED " + data["updated"], 8, c["muted"], 500, spacing=0.45)
-    text(1176, 744, "github.com/" + USERNAME, 8, c["muted"], 500, "end")
+    # Compact footer; GitHub renders its native contribution calendar below the README.
+    text(24, 532, "GITHUB PROFILE  ·  UPDATED " + data["updated"], 8, c["muted"], 500, spacing=0.45)
+    text(1176, 532, "github.com/" + USERNAME, 8, c["muted"], 500, "end")
     parts.append("</svg>")
     return "\n".join(parts)
 
