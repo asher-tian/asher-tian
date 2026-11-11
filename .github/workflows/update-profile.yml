@@ -11,6 +11,7 @@ on:
       - "scripts/**"
       - "requirements.txt"
       - ".github/workflows/update-profile.yml"
+      - "README.md"
 
 permissions:
   contents: write
@@ -35,21 +36,21 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
 
-      - name: Generate profile SVGs
+      - name: Generate animated profile cards
         env:
           GITHUB_USERNAME: asher-tian
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/build_profile.py
 
-      - name: Commit generated SVGs
+      - name: Commit generated GIFs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dark_mode.svg light_mode.svg
+          git add dark_mode.gif light_mode.gif
           if git diff --cached --quiet; then
             echo "No profile changes."
           else
-            git commit -m "chore: refresh GitHub profile"
+            git commit -m "chore: refresh animated guofeng profile"
             git pull --rebase origin main
             git push
           fi
