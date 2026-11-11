@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+<style>
+text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
+.ascii{white-space:pre;font-size:8.4px;letter-spacing:0.15px;}
+</style>
+<rect width="1200" height="700" rx="18" fill="#f6f8fa"/>
+<rect x="24" y="16" width="1152" height="36" rx="9" fill="#ffffff" stroke="#d0d7de"/>
+<circle cx="43" cy="34" r="5" fill="#bc4c00"/>
+<circle cx="61" cy="34" r="5" fill="#1a7f37"/>
+<circle cx="79" cy="34" r="5" fill="#0969da"/>
+<text x="98" y="39" font-size="13" font-weight="700" fill="#1f2328">asher-tian@github:~</text>
+<text x="1154" y="38" font-size="9" text-anchor="end" letter-spacing="1.2" fill="#656d76">PROFILE TERMINAL // PUBLIC DATA</text>
+<rect x="24" y="66" width="365" height="610" rx="14" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="408" y="66" width="768" height="610" rx="14" fill="#ffffff" stroke="#d0d7de"/>
+<text x="44" y="98" font-size="10" font-weight="700" fill="#656d76" letter-spacing="1.2">IDENTITY // 001</text>
+<text x="44" y="130" class="ascii" xml:space="preserve" fill="#1a7f37">
+<tspan x="44" y="130.0">                                                </tspan>
+<tspan x="44" y="140.5">                                                </tspan>
+<tspan x="44" y="151.0">                                                </tspan>
+<tspan x="44" y="161.5">                            ..                  </tspan>
+<tspan x="44" y="172.0">                            +%-                 </tspan>
+<tspan x="44" y="182.5">                   .+=      #@*                 </tspan>
+<tspan x="44" y="193.0">                   +@@=     *@+                 </tspan>
+<tspan x="44" y="203.5">                   *@@*     -#:                 </tspan>
+<tspan x="44" y="214.0">                   +@@+                         </tspan>
+<tspan x="44" y="224.5">                   .#*.                         </tspan>
+<tspan x="44" y="235.0">                                  .-.           </tspan>
+<tspan x="44" y="245.5">                                  +@=           </tspan>
+<tspan x="44" y="256.0">                                 -@@:           </tspan>
+<tspan x="44" y="266.5">                                :%@+            </tspan>
+<tspan x="44" y="277.0">                               :%@*             </tspan>
+<tspan x="44" y="287.5">             ..               :%@*.             </tspan>
+<tspan x="44" y="298.0">            .%%*-           .=@@*.              </tspan>
+<tspan x="44" y="308.5">             *@@@#-.      .=%@%=                </tspan>
+<tspan x="44" y="319.0">              +%@@@%*+++*#@@%+.                 </tspan>
+<tspan x="44" y="329.5">               .-+*#%@@@@%*=.                   </tspan>
+<tspan x="44" y="340.0">                    ..::.                       </tspan>
+<tspan x="44" y="350.5">                                                </tspan>
+<tspan x="44" y="361.0">                                                </tspan>
+<tspan x="44" y="371.5">                                                </tspan>
+<tspan x="44" y="382.0">                                                </tspan>
+<tspan x="44" y="392.5">                                                </tspan>
+</text>
+<line x1="44" y1="414" x2="369" y2="414" stroke="#d0d7de"/>
+<text x="44" y="452" font-size="22" font-weight="700" fill="#1f2328">ASHER TIAN</text>
+<text x="44" y="475" font-size="12" font-weight="600" fill="#1a7f37">@asher-tian</text>
+<text x="44" y="514" font-size="9" font-weight="700" fill="#656d76" letter-spacing="1.1">FOCUS</text>
+<text x="44" y="534" font-size="11" font-weight="400" fill="#1f2328">Developer tooling · CLI · reporting</text>
+<text x="44" y="562" font-size="9" font-weight="700" fill="#656d76" letter-spacing="1.1">WORKSTATION</text>
+<text x="44" y="582" font-size="11" font-weight="400" fill="#1f2328">macOS · Windows</text>
+<text x="44" y="610" font-size="9" font-weight="700" fill="#656d76" letter-spacing="1.1">AI TOOLCHAIN</text>
+<text x="44" y="630" font-size="11" font-weight="400" fill="#1f2328">Copilot · Claude Code</text>
+<text x="44" y="654" font-size="8" font-weight="500" fill="#656d76" letter-spacing="0.8">STATUS / PROFILE GENERATED</text>
+<text x="432" y="99" font-size="15" font-weight="700" fill="#1f2328" letter-spacing="0.8">SYSTEM PROFILE</text>
+<text x="1154" y="98" font-size="9" font-weight="600" fill="#656d76" text-anchor="end" letter-spacing="1.0">LIVE GITHUB TELEMETRY</text>
+<text x="432" y="143" font-size="9" font-weight="700" fill="#656d76" letter-spacing="0.7">ROLE</text>
+<text x="535" y="143" font-size="11" font-weight="500" fill="#1f2328">Software developer</text>
+<text x="432" y="166" font-size="9" font-weight="700" fill="#656d76" letter-spacing="0.7">FOCUS</text>
+<text x="535" y="166" font-size="11" font-weight="500" fill="#1f2328">Developer tooling · CLI · workflow · reporting</text>
+<text x="432" y="189" font-size="9" font-weight="700" fill="#656d76" letter-spacing="0.7">STACK</text>
+<text x="535" y="189" font-size="11" font-weight="500" fill="#1f2328">Python · Go · Vue · JavaScript</text>
+<text x="432" y="212" font-size="9" font-weight="700" fill="#656d76" letter-spacing="0.7">ENV</text>
+<text x="535" y="212" font-size="11" font-weight="500" fill="#1f2328">macOS · Windows</text>
+<text x="432" y="235" font-size="9" font-weight="700" fill="#656d76" letter-spacing="0.7">TOOLS</text>
+<text x="535" y="235" font-size="11" font-weight="500" fill="#1f2328">VS Code · PyCharm · iTerm2 · Copilot · Claude Code</text>
+<rect x="432" y="268" width="172" height="91" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="446" y="291" font-size="9" font-weight="700" fill="#656d76" letter-spacing="0.6">PUBLIC REPOS</text>
+<text x="446" y="326" font-size="25" font-weight="700" fill="#1f2328">3</text>
+<text x="446" y="346" font-size="8" font-weight="400" fill="#656d76">repositories</text>
+<rect x="616" y="268" width="172" height="91" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="630" y="291" font-size="9" font-weight="700" fill="#656d76" letter-spacing="0.6">STARS</text>
+<text x="630" y="326" font-size="25" font-weight="700" fill="#1f2328">0</text>
+<text x="630" y="346" font-size="8" font-weight="400" fill="#656d76">across owned public repos</text>
+<rect x="800" y="268" width="172" height="91" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="814" y="291" font-size="9" font-weight="700" fill="#656d76" letter-spacing="0.6">FOLLOWERS</text>
+<text x="814" y="326" font-size="25" font-weight="700" fill="#1f2328">12</text>
+<text x="814" y="346" font-size="8" font-weight="400" fill="#656d76">GitHub followers</text>
+<rect x="984" y="268" width="172" height="91" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="998" y="291" font-size="9" font-weight="700" fill="#656d76" letter-spacing="0.6">PUBLIC COMMITS</text>
+<text x="998" y="326" font-size="25" font-weight="700" fill="#1f2328">108</text>
+<text x="998" y="346" font-size="8" font-weight="400" fill="#656d76">matched by GitHub author</text>
+<rect x="432" y="375" width="350" height="168" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="450" y="402" font-size="10" font-weight="700" fill="#1f2328" letter-spacing="0.5">PUBLIC ACTIVITY // 30 DAYS</text>
+<text x="450" y="423" font-size="9" font-weight="400" fill="#656d76">94 events</text>
+<rect x="450.0" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="460.2" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="470.4" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="480.6" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="490.8" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="501.0" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="511.2" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="521.4" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="531.6" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="541.8" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="552.0" y="458.0" width="7.2" height="52.0" rx="2" fill="#1a7f37" opacity="1.00"/>
+<rect x="562.2" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="572.4" y="504.9" width="7.2" height="5.1" rx="2" fill="#1a7f37" opacity="0.59"/>
+<rect x="582.6" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.56"/>
+<rect x="592.8" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="603.0" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="613.2" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="623.4" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="633.6" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="643.8" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="654.0" y="485.9" width="7.2" height="24.1" rx="2" fill="#1a7f37" opacity="0.76"/>
+<rect x="664.2" y="498.6" width="7.2" height="11.4" rx="2" fill="#1a7f37" opacity="0.65"/>
+<rect x="674.4" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="684.6" y="498.6" width="7.2" height="11.4" rx="2" fill="#1a7f37" opacity="0.65"/>
+<rect x="694.8" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="705.0" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="715.2" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="725.4" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.32"/>
+<rect x="735.6" y="497.3" width="7.2" height="12.7" rx="2" fill="#1a7f37" opacity="0.66"/>
+<rect x="745.8" y="507.0" width="7.2" height="3.0" rx="2" fill="#1a7f37" opacity="0.56"/>
+<line x1="450" y1="511" x2="761" y2="511" stroke="#d0d7de"/>
+<text x="450" y="531" font-size="8" font-weight="400" fill="#656d76">30 DAYS AGO</text>
+<text x="761" y="531" font-size="8" font-weight="500" fill="#656d76" text-anchor="end">TODAY</text>
+<rect x="798" y="375" width="358" height="168" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="816" y="402" font-size="10" font-weight="700" fill="#1f2328" letter-spacing="0.5">LANGUAGE MIX // TOP 4</text>
+<text x="816" y="442" font-size="9" font-weight="600" fill="#1f2328">Jinja</text>
+<rect x="925" y="433" width="176" height="7" rx="3.5" fill="#d8dee4"/>
+<rect x="925" y="433" width="110.9" height="7" rx="3.5" fill="#0969da"/>
+<text x="1138" y="442" font-size="9" font-weight="500" fill="#656d76" text-anchor="end">63%</text>
+<text x="816" y="466" font-size="9" font-weight="600" fill="#1f2328">PowerShell</text>
+<rect x="925" y="457" width="176" height="7" rx="3.5" fill="#d8dee4"/>
+<rect x="925" y="457" width="28.2" height="7" rx="3.5" fill="#1a7f37"/>
+<text x="1138" y="466" font-size="9" font-weight="500" fill="#656d76" text-anchor="end">16%</text>
+<text x="816" y="490" font-size="9" font-weight="600" fill="#1f2328">Python</text>
+<rect x="925" y="481" width="176" height="7" rx="3.5" fill="#d8dee4"/>
+<rect x="925" y="481" width="22.9" height="7" rx="3.5" fill="#bc4c00"/>
+<text x="1138" y="490" font-size="9" font-weight="500" fill="#656d76" text-anchor="end">13%</text>
+<text x="816" y="514" font-size="9" font-weight="600" fill="#1f2328">Shell</text>
+<rect x="925" y="505" width="176" height="7" rx="3.5" fill="#d8dee4"/>
+<rect x="925" y="505" width="15.8" height="7" rx="3.5" fill="#8250df"/>
+<text x="1138" y="514" font-size="9" font-weight="500" fill="#656d76" text-anchor="end">9%</text>
+<rect x="432" y="555" width="724" height="91" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="450" y="580" font-size="10" font-weight="700" fill="#1f2328" letter-spacing="0.5">FEATURED REPOSITORIES</text>
+<text x="450" y="609" font-size="11" font-weight="600" fill="#0969da">asher-tian</text>
+<text x="450" y="630" font-size="9" font-weight="400" fill="#656d76">★ 0   ·   Python</text>
+<text x="690" y="609" font-size="11" font-weight="600" fill="#0969da">python-app-template</text>
+<text x="690" y="630" font-size="9" font-weight="400" fill="#656d76">★ 0   ·   Jinja</text>
+<text x="930" y="609" font-size="11" font-weight="600" fill="#0969da">dev-env</text>
+<text x="930" y="630" font-size="9" font-weight="400" fill="#656d76">★ 0   ·   PowerShell</text>
+<text x="432" y="665" font-size="8" font-weight="500" fill="#656d76" letter-spacing="0.5">PUBLIC DATA ONLY  ·  UPDATED 2026-11-11 02:41 UTC</text>
+</svg>
