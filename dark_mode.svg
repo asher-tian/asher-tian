@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
 <style>
 text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
-.ascii{white-space:pre;font-size:8.4px;letter-spacing:0.15px;}
+.ascii{white-space:pre;font-size:7.5px;letter-spacing:0px;}
 </style>
 <rect width="1200" height="700" rx="18" fill="#0d1117"/>
 <rect x="24" y="16" width="1152" height="36" rx="9" fill="#161b22" stroke="#30363d"/>
@@ -14,33 +14,44 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
 <rect x="24" y="66" width="365" height="610" rx="14" fill="#161b22" stroke="#30363d"/>
 <rect x="408" y="66" width="768" height="610" rx="14" fill="#161b22" stroke="#30363d"/>
 <text x="44" y="98" font-size="10" font-weight="700" fill="#8b949e" letter-spacing="1.2">IDENTITY // 001</text>
-<text x="44" y="130" class="ascii" xml:space="preserve" fill="#7ee787">
-<tspan x="44" y="130.0">                                                </tspan>
-<tspan x="44" y="140.5">                                                </tspan>
-<tspan x="44" y="151.0">                                                </tspan>
-<tspan x="44" y="161.5">                            ..                  </tspan>
-<tspan x="44" y="172.0">                            +%-                 </tspan>
-<tspan x="44" y="182.5">                   .+=      #@*                 </tspan>
-<tspan x="44" y="193.0">                   +@@=     *@+                 </tspan>
-<tspan x="44" y="203.5">                   *@@*     -#:                 </tspan>
-<tspan x="44" y="214.0">                   +@@+                         </tspan>
-<tspan x="44" y="224.5">                   .#*.                         </tspan>
-<tspan x="44" y="235.0">                                  .-.           </tspan>
-<tspan x="44" y="245.5">                                  +@=           </tspan>
-<tspan x="44" y="256.0">                                 -@@:           </tspan>
-<tspan x="44" y="266.5">                                :%@+            </tspan>
-<tspan x="44" y="277.0">                               :%@*             </tspan>
-<tspan x="44" y="287.5">             ..               :%@*.             </tspan>
-<tspan x="44" y="298.0">            .%%*-           .=@@*.              </tspan>
-<tspan x="44" y="308.5">             *@@@#-.      .=%@%=                </tspan>
-<tspan x="44" y="319.0">              +%@@@%*+++*#@@%+.                 </tspan>
-<tspan x="44" y="329.5">               .-+*#%@@@@%*=.                   </tspan>
-<tspan x="44" y="340.0">                    ..::.                       </tspan>
-<tspan x="44" y="350.5">                                                </tspan>
-<tspan x="44" y="361.0">                                                </tspan>
-<tspan x="44" y="371.5">                                                </tspan>
-<tspan x="44" y="382.0">                                                </tspan>
-<tspan x="44" y="392.5">                                                </tspan>
+<text x="130" y="124" class="ascii" xml:space="preserve" fill="#7ee787">
+<tspan x="130" y="124.0">::.   ..:.  ..::.     ..:..:::::::</tspan>
+<tspan x="130" y="131.4">:.....:::..::::.    .--.::.:::::::</tspan>
+<tspan x="130" y="138.8">:..:::::::::::...  :%@@+.::-::::::</tspan>
+<tspan x="130" y="146.2">.::::::::::::.... .*%##%==%%=:::::</tspan>
+<tspan x="130" y="153.6">......:::::::::..  :%%%#:%@@@+:.::</tspan>
+<tspan x="130" y="161.0">..:...:::::::::   .-###+.-%@@@%+.:</tspan>
+<tspan x="130" y="168.4">........:::::..-*#%%%%%%*=%@@@@%:.</tspan>
+<tspan x="130" y="175.8">......:::::::::#%%%%%@%%%@@@@@@#..</tspan>
+<tspan x="130" y="183.2">.......    :::.+%##%@@%%@@@@@@%:..</tspan>
+<tspan x="130" y="190.6">...... =##: ::.-#%##@%%%@@@@@%#=..</tspan>
+<tspan x="130" y="198.0">......:%%%#:.   *%%%%%%%%%%%%%%#:.</tspan>
+<tspan x="130" y="205.4">....:.-%%%%-.   =####****%@%#%#-..</tspan>
+<tspan x="130" y="212.8">......:#%#+-:..  :-:-#=#%*=:=-:...</tspan>
+<tspan x="130" y="220.2">-.:.+*%@@%%#=.    -+%@*@%+*++:....</tspan>
+<tspan x="130" y="227.6">  :#@@@@@@@@@*    =#@#%@#+@%%*....</tspan>
+<tspan x="130" y="235.0">: =@@@@@@@@@@@-  .+#*%%+#=#%%%:...</tspan>
+<tspan x="130" y="242.4">. +@@@@@@@@@@@*  .=+##*#%++%#%+ ..</tspan>
+<tspan x="130" y="249.8">  :%@%%@@@@@#@+   :=-.-**=:+#+:.  </tspan>
+<tspan x="130" y="257.2">  .%@%%@@@@#.*@#*++=+***=-*#%+ .  </tspan>
+<tspan x="130" y="264.6">   =%@@@@@@%..:-===#%***+=*##= .  </tspan>
+<tspan x="130" y="272.0">  . =%%@@@@@*.    ..=+**==*##- .  </tspan>
+<tspan x="130" y="279.4">-.. #%#%@@@@@*.   -.-+**--+*#: .  </tspan>
+<tspan x="130" y="286.8">: . #@@@@@@%%@@#= :..=*+:=++*:    </tspan>
+<tspan x="130" y="294.2">: . -@@@@@@%%@@@@%*: -++.=++*.    </tspan>
+<tspan x="130" y="301.6">: ...***#@@@@@@@%%@#.-=+ :+**:    </tspan>
+<tspan x="130" y="309.0">:  . .#-++*%@@@@%%@+:++*.:=+*:    </tspan>
+<tspan x="130" y="316.4">: ..  :%%#-:*#@@%%@:-++*.:*-*-    </tspan>
+<tspan x="130" y="323.8">: ..   :%%=. =@@%%#:-=+*. *+++    </tspan>
+<tspan x="130" y="331.2">: .:.    +=  +@@%@+ ++**  -+#*    </tspan>
+<tspan x="130" y="338.6">.  .         =@%%%:.-++-  .:==.  .</tspan>
+<tspan x="130" y="346.0">.  .         -@%%#..:--.  .--:    </tspan>
+<tspan x="130" y="353.4">.  .  .  .   :@%%=..              </tspan>
+<tspan x="130" y="360.8">            .+@%@= .  ......    ..</tspan>
+<tspan x="130" y="368.2">........... -%%@%%-.:::::::::::...</tspan>
+<tspan x="130" y="375.6">::-:::::.::: :#@@#*=---:..::::::::</tspan>
+<tspan x="130" y="383.0">--::::-::::-:.:+**+-:----::---:..:</tspan>
+<tspan x="130" y="390.4">--:-:---:::-----===-----------:..:</tspan>
 </text>
 <line x1="44" y1="414" x2="369" y2="414" stroke="#30363d"/>
 <text x="44" y="452" font-size="22" font-weight="700" fill="#e6edf3">ASHER TIAN</text>
@@ -78,7 +89,7 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
 <text x="814" y="346" font-size="8" font-weight="400" fill="#8b949e">GitHub followers</text>
 <rect x="984" y="268" width="172" height="91" rx="10" fill="#0f141b" stroke="#30363d"/>
 <text x="998" y="291" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.6">PUBLIC COMMITS</text>
-<text x="998" y="326" font-size="25" font-weight="700" fill="#e6edf3">108</text>
+<text x="998" y="326" font-size="25" font-weight="700" fill="#e6edf3">113</text>
 <text x="998" y="346" font-size="8" font-weight="400" fill="#8b949e">matched by GitHub author</text>
 <rect x="432" y="375" width="350" height="168" rx="10" fill="#0f141b" stroke="#30363d"/>
 <text x="450" y="402" font-size="10" font-weight="700" fill="#e6edf3" letter-spacing="0.5">PUBLIC ACTIVITY // 30 DAYS</text>
@@ -142,5 +153,5 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
 <text x="690" y="630" font-size="9" font-weight="400" fill="#8b949e">★ 0   ·   Jinja</text>
 <text x="930" y="609" font-size="11" font-weight="600" fill="#79c0ff">dev-env</text>
 <text x="930" y="630" font-size="9" font-weight="400" fill="#8b949e">★ 0   ·   PowerShell</text>
-<text x="432" y="665" font-size="8" font-weight="500" fill="#8b949e" letter-spacing="0.5">PUBLIC DATA ONLY  ·  UPDATED 2026-11-11 02:41 UTC</text>
+<text x="432" y="665" font-size="8" font-weight="500" fill="#8b949e" letter-spacing="0.5">PUBLIC DATA ONLY  ·  UPDATED 2026-11-11 03:08 UTC</text>
 </svg>
