@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
 <style>
 text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
 .ascii{white-space:pre;font-size:8.4px;letter-spacing:0px;}
 </style>
-<rect width="1200" height="700" rx="18" fill="#0d1117"/>
+<rect width="1200" height="760" rx="18" fill="#0d1117"/>
 <rect x="24" y="16" width="1152" height="36" rx="9" fill="#161b22" stroke="#30363d"/>
 <circle cx="43" cy="34" r="5" fill="#ffa657"/>
 <circle cx="61" cy="34" r="5" fill="#7ee787"/>
 <circle cx="79" cy="34" r="5" fill="#79c0ff"/>
 <text x="98" y="39" font-size="13" font-weight="700" fill="#e6edf3">asher-tian@github:~</text>
-<text x="1154" y="38" font-size="9" text-anchor="end" letter-spacing="1.2" fill="#8b949e">PROFILE TERMINAL // PUBLIC DATA</text>
-<rect x="24" y="66" width="365" height="610" rx="14" fill="#161b22" stroke="#30363d"/>
-<rect x="408" y="66" width="768" height="610" rx="14" fill="#161b22" stroke="#30363d"/>
-<text x="44" y="98" font-size="10" font-weight="700" fill="#8b949e" letter-spacing="1.2">IDENTITY // 001</text>
+<text x="1154" y="38" font-size="9" text-anchor="end" letter-spacing="1.2" fill="#8b949e">PERSONAL GITHUB DASHBOARD</text>
+<rect x="24" y="66" width="365" height="314" rx="14" fill="#161b22" stroke="#30363d"/>
+<rect x="408" y="66" width="768" height="314" rx="14" fill="#161b22" stroke="#30363d"/>
+<text x="44" y="98" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.9">AVATAR // LIVE FROM GITHUB</text>
 <text x="85" y="128" class="ascii" xml:space="preserve" fill="#7ee787">
 <tspan x="85" y="128.0">                                                </tspan>
 <tspan x="85" y="136.4">                                                </tspan>
@@ -45,99 +45,39 @@ text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
 <tspan x="85" y="354.8">                                                </tspan>
 <tspan x="85" y="363.2">                                                </tspan>
 </text>
-<line x1="44" y1="414" x2="369" y2="414" stroke="#30363d"/>
-<text x="44" y="452" font-size="22" font-weight="700" fill="#e6edf3">ASHER TIAN</text>
-<text x="44" y="475" font-size="12" font-weight="600" fill="#7ee787">@asher-tian</text>
-<text x="44" y="514" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="1.1">FOCUS</text>
-<text x="44" y="534" font-size="11" font-weight="400" fill="#e6edf3">Developer tooling · CLI · reporting</text>
-<text x="44" y="562" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="1.1">WORKSTATION</text>
-<text x="44" y="582" font-size="11" font-weight="400" fill="#e6edf3">macOS · Windows</text>
-<text x="44" y="610" font-size="8" font-weight="500" fill="#8b949e" letter-spacing="0.8">PROFILE / GENERATED</text>
-<text x="432" y="99" font-size="15" font-weight="700" fill="#e6edf3" letter-spacing="0.8">SYSTEM PROFILE</text>
-<text x="1154" y="98" font-size="9" font-weight="600" fill="#8b949e" text-anchor="end" letter-spacing="1.0">LIVE GITHUB TELEMETRY</text>
-<text x="432" y="143" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.7">ROLE</text>
-<text x="535" y="143" font-size="11" font-weight="500" fill="#e6edf3">Software developer</text>
-<text x="432" y="166" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.7">FOCUS</text>
-<text x="535" y="166" font-size="11" font-weight="500" fill="#e6edf3">Developer tooling · CLI · workflow · reporting</text>
-<text x="432" y="189" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.7">ENV</text>
-<text x="535" y="189" font-size="11" font-weight="500" fill="#e6edf3">macOS · Windows</text>
-<rect x="432" y="268" width="172" height="91" rx="10" fill="#0f141b" stroke="#30363d"/>
-<text x="446" y="291" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.6">PUBLIC REPOS</text>
-<text x="446" y="326" font-size="25" font-weight="700" fill="#e6edf3">3</text>
-<text x="446" y="346" font-size="8" font-weight="400" fill="#8b949e">repositories</text>
-<rect x="616" y="268" width="172" height="91" rx="10" fill="#0f141b" stroke="#30363d"/>
-<text x="630" y="291" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.6">STARS</text>
-<text x="630" y="326" font-size="25" font-weight="700" fill="#e6edf3">0</text>
-<text x="630" y="346" font-size="8" font-weight="400" fill="#8b949e">across owned public repos</text>
-<rect x="800" y="268" width="172" height="91" rx="10" fill="#0f141b" stroke="#30363d"/>
-<text x="814" y="291" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.6">FOLLOWERS</text>
-<text x="814" y="326" font-size="25" font-weight="700" fill="#e6edf3">12</text>
-<text x="814" y="346" font-size="8" font-weight="400" fill="#8b949e">GitHub followers</text>
-<rect x="984" y="268" width="172" height="91" rx="10" fill="#0f141b" stroke="#30363d"/>
-<text x="998" y="291" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.6">PUBLIC COMMITS</text>
-<text x="998" y="326" font-size="25" font-weight="700" fill="#e6edf3">123</text>
-<text x="998" y="346" font-size="8" font-weight="400" fill="#8b949e">matched by GitHub author</text>
-<rect x="432" y="375" width="350" height="168" rx="10" fill="#0f141b" stroke="#30363d"/>
-<text x="450" y="402" font-size="10" font-weight="700" fill="#e6edf3" letter-spacing="0.5">PUBLIC ACTIVITY // 30 DAYS</text>
-<text x="450" y="423" font-size="9" font-weight="400" fill="#8b949e">94 events</text>
-<rect x="450.0" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="460.2" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="470.4" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="480.6" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="490.8" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="501.0" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="511.2" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="521.4" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="531.6" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="541.8" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="552.0" y="458.0" width="7.2" height="52.0" rx="2" fill="#7ee787" opacity="1.00"/>
-<rect x="562.2" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="572.4" y="504.9" width="7.2" height="5.1" rx="2" fill="#7ee787" opacity="0.59"/>
-<rect x="582.6" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.56"/>
-<rect x="592.8" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="603.0" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="613.2" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="623.4" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="633.6" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="643.8" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="654.0" y="485.9" width="7.2" height="24.1" rx="2" fill="#7ee787" opacity="0.76"/>
-<rect x="664.2" y="498.6" width="7.2" height="11.4" rx="2" fill="#7ee787" opacity="0.65"/>
-<rect x="674.4" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="684.6" y="498.6" width="7.2" height="11.4" rx="2" fill="#7ee787" opacity="0.65"/>
-<rect x="694.8" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="705.0" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="715.2" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="725.4" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.32"/>
-<rect x="735.6" y="497.3" width="7.2" height="12.7" rx="2" fill="#7ee787" opacity="0.66"/>
-<rect x="745.8" y="507.0" width="7.2" height="3.0" rx="2" fill="#7ee787" opacity="0.56"/>
-<line x1="450" y1="511" x2="761" y2="511" stroke="#30363d"/>
-<text x="450" y="531" font-size="8" font-weight="400" fill="#8b949e">30 DAYS AGO</text>
-<text x="761" y="531" font-size="8" font-weight="500" fill="#8b949e" text-anchor="end">TODAY</text>
-<rect x="798" y="375" width="358" height="168" rx="10" fill="#0f141b" stroke="#30363d"/>
-<text x="816" y="402" font-size="10" font-weight="700" fill="#e6edf3" letter-spacing="0.5">LANGUAGE MIX // TOP 4</text>
-<text x="816" y="442" font-size="9" font-weight="600" fill="#e6edf3">Jinja</text>
-<rect x="925" y="433" width="176" height="7" rx="3.5" fill="#30363d"/>
-<rect x="925" y="433" width="110.9" height="7" rx="3.5" fill="#79c0ff"/>
-<text x="1138" y="442" font-size="9" font-weight="500" fill="#8b949e" text-anchor="end">63%</text>
-<text x="816" y="466" font-size="9" font-weight="600" fill="#e6edf3">PowerShell</text>
-<rect x="925" y="457" width="176" height="7" rx="3.5" fill="#30363d"/>
-<rect x="925" y="457" width="28.2" height="7" rx="3.5" fill="#7ee787"/>
-<text x="1138" y="466" font-size="9" font-weight="500" fill="#8b949e" text-anchor="end">16%</text>
-<text x="816" y="490" font-size="9" font-weight="600" fill="#e6edf3">Python</text>
-<rect x="925" y="481" width="176" height="7" rx="3.5" fill="#30363d"/>
-<rect x="925" y="481" width="22.9" height="7" rx="3.5" fill="#ffa657"/>
-<text x="1138" y="490" font-size="9" font-weight="500" fill="#8b949e" text-anchor="end">13%</text>
-<text x="816" y="514" font-size="9" font-weight="600" fill="#e6edf3">Shell</text>
-<rect x="925" y="505" width="176" height="7" rx="3.5" fill="#30363d"/>
-<rect x="925" y="505" width="15.8" height="7" rx="3.5" fill="#d2a8ff"/>
-<text x="1138" y="514" font-size="9" font-weight="500" fill="#8b949e" text-anchor="end">9%</text>
-<rect x="432" y="555" width="724" height="91" rx="10" fill="#0f141b" stroke="#30363d"/>
-<text x="450" y="580" font-size="10" font-weight="700" fill="#e6edf3" letter-spacing="0.5">FEATURED REPOSITORIES</text>
-<text x="450" y="609" font-size="11" font-weight="600" fill="#79c0ff">asher-tian</text>
-<text x="450" y="630" font-size="9" font-weight="400" fill="#8b949e">★ 0   ·   Python</text>
-<text x="690" y="609" font-size="11" font-weight="600" fill="#79c0ff">python-app-template</text>
-<text x="690" y="630" font-size="9" font-weight="400" fill="#8b949e">★ 0   ·   Jinja</text>
-<text x="930" y="609" font-size="11" font-weight="600" fill="#79c0ff">dev-env</text>
-<text x="930" y="630" font-size="9" font-weight="400" fill="#8b949e">★ 0   ·   PowerShell</text>
-<text x="432" y="665" font-size="8" font-weight="500" fill="#8b949e" letter-spacing="0.5">PUBLIC DATA ONLY  ·  UPDATED 2026-11-11 03:36 UTC</text>
+<text x="442" y="116" font-size="10" font-weight="700" fill="#8b949e" letter-spacing="1.4">HELLO, I&#x27;M</text>
+<text x="442" y="174" font-size="38" font-weight="700" fill="#e6edf3">Asher Tian</text>
+<text x="444" y="204" font-size="13" font-weight="600" fill="#7ee787">@asher-tian</text>
+<line x1="442" y1="230" x2="1142" y2="230" stroke="#30363d"/>
+<text x="442" y="274" font-size="15" font-weight="400" fill="#e6edf3">Building useful software and data-driven workflows.</text>
+<text x="442" y="320" font-size="9" font-weight="600" fill="#8b949e" letter-spacing="1.1">PUBLIC GITHUB PROFILE</text>
+<rect x="24" y="402" width="270" height="98" rx="11" fill="#161b22" stroke="#30363d"/>
+<text x="42" y="429" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.65">PUBLIC REPOSITORIES</text>
+<text x="42" y="469" font-size="27" font-weight="700" fill="#e6edf3">3</text>
+<text x="42" y="487" font-size="8" font-weight="400" fill="#8b949e">owned public repositories</text>
+<rect x="318" y="402" width="270" height="98" rx="11" fill="#161b22" stroke="#30363d"/>
+<text x="336" y="429" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.65">TOTAL STARS</text>
+<text x="336" y="469" font-size="27" font-weight="700" fill="#e6edf3">0</text>
+<text x="336" y="487" font-size="8" font-weight="400" fill="#8b949e">across owned public repositories</text>
+<rect x="612" y="402" width="270" height="98" rx="11" fill="#161b22" stroke="#30363d"/>
+<text x="630" y="429" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.65">FOLLOWERS</text>
+<text x="630" y="469" font-size="27" font-weight="700" fill="#e6edf3">12</text>
+<text x="630" y="487" font-size="8" font-weight="400" fill="#8b949e">GitHub followers</text>
+<rect x="906" y="402" width="270" height="98" rx="11" fill="#161b22" stroke="#30363d"/>
+<text x="924" y="429" font-size="9" font-weight="700" fill="#8b949e" letter-spacing="0.65">CONTRIBUTIONS</text>
+<text x="924" y="469" font-size="27" font-weight="700" fill="#e6edf3">—</text>
+<text x="924" y="487" font-size="8" font-weight="400" fill="#8b949e">public · last 12 months</text>
+<rect x="24" y="520" width="1152" height="190" rx="11" fill="#161b22" stroke="#30363d"/>
+<text x="44" y="550" font-size="10" font-weight="700" fill="#e6edf3" letter-spacing="0.55">CONTRIBUTION ACTIVITY // LAST 12 MONTHS</text>
+<text x="1154" y="550" font-size="9" font-weight="500" fill="#8b949e" text-anchor="end">unavailable</text>
+<text x="230" y="635" font-size="11" font-weight="400" fill="#8b949e">Contribution calendar unavailable</text>
+<text x="924" y="704" font-size="8" font-weight="400" fill="#8b949e">LESS</text>
+<rect x="960" y="696" width="10" height="10" rx="2" fill="#21262d"/>
+<rect x="975" y="696" width="10" height="10" rx="2" fill="#0e4429"/>
+<rect x="990" y="696" width="10" height="10" rx="2" fill="#006d32"/>
+<rect x="1005" y="696" width="10" height="10" rx="2" fill="#26a641"/>
+<rect x="1020" y="696" width="10" height="10" rx="2" fill="#39d353"/>
+<text x="1042" y="704" font-size="8" font-weight="400" fill="#8b949e">MORE</text>
+<text x="24" y="744" font-size="8" font-weight="500" fill="#8b949e" letter-spacing="0.45">PUBLIC CONTRIBUTIONS ONLY  ·  UPDATED 2026-11-11 06:52 UTC</text>
+<text x="1176" y="744" font-size="8" font-weight="500" fill="#8b949e" text-anchor="end">github.com/asher-tian</text>
 </svg>
