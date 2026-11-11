@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-"""Build a terminal-style GitHub profile from public GitHub data."""
+"""Build a terminal-style GitHub profile dashboard."""
 
 from __future__ import annotations
 
 import json
 import os
 import sys
-from collections import Counter
 from datetime import date, datetime, timedelta, timezone
 from html import escape
 from io import BytesIO
@@ -19,8 +18,9 @@ ROOT = Path(__file__).resolve().parents[1]
 USERNAME = os.getenv("GITHUB_USERNAME", "asher-tian")
 API_ROOT = "https://api.github.com"
 TOKEN = os.getenv("GITHUB_TOKEN")
-# Monospace glyphs are taller than they are wide. A 48x29 sampling grid
-# compensates for the font cell aspect ratio so the rendered portrait is square.
+
+# Monospace glyphs are taller than they are wide. This sampling ratio keeps
+# the rendered ASCII portrait visually square in the SVG terminal font.
 AVATAR_WIDTH = 48
 AVATAR_HEIGHT = 29
 ASCII_CHARS = "@%#*+=-:. "
@@ -34,7 +34,6 @@ def request_json(url: str):
     }
     if TOKEN:
         headers["Authorization"] = f"Bearer {TOKEN}"
-
     request = Request(url, headers=headers)
     with urlopen(request, timeout=25) as response:
         return json.loads(response.read().decode("utf-8"))
@@ -46,6 +45,28 @@ def optional_json(url: str):
     except (HTTPError, URLError, TimeoutError, ValueError) as exc:
         print(f"Warning: optional GitHub request failed: {url} ({exc})", file=sys.stderr)
         return None
+
+
+def request_graphql(query: str, variables: dict):
+    if not TOKEN:
+        raise RuntimeError("GITHUB_TOKEN is required for the contribution calendar")
+    payload = json.dumps({"query": query, "variables": variables}).encode("utf-8")
+    request = Request(
+        "https://api.github.com/graphql",
+        data=payload,
+        headers={
+            "Accept": "application/vnd.github+json",
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {TOKEN}",
+            "User-Agent": f"{USERNAME}-profile-readme",
+        },
+        method="POST",
+    )
+    with urlopen(request, timeout=30) as response:
+        result = json.loads(response.read().decode("utf-8"))
+    if result.get("errors"):
+        raise RuntimeError("; ".join(error.get("message", "GraphQL error") for error in result["errors"]))
+    return result["data"]
 
 
 def fetch_profile() -> dict:
@@ -66,106 +87,58 @@ def fetch_repositories() -> list[dict]:
     return repositories
 
 
-def fetch_commit_count() -> int | None:
-    result = optional_json(
-        f"{API_ROOT}/search/commits?q=author:{quote(USERNAME)}&per_page=1"
-    )
-    if not result:
-        return None
-    return int(result.get("total_count", 0))
-
-
-def fetch_public_events() -> list[dict] | None:
-    events: list[dict] = []
-    cutoff = datetime.now(timezone.utc) - timedelta(days=30)
-
-    for page in range(1, 4):
-        batch = optional_json(
-            f"{API_ROOT}/users/{quote(USERNAME)}/events/public"
-            f"?per_page=100&page={page}"
+def fetch_contribution_calendar() -> dict | None:
+    today = datetime.now(timezone.utc).date()
+    start = today - timedelta(days=364)
+    end = today + timedelta(days=1)
+    query = """
+    query($login: String!, $from: DateTime!, $to: DateTime!) {
+      user(login: $login) {
+        contributionsCollection(
+          from: $from
+          to: $to
+          includePrivateContributions: false
+        ) {
+          contributionCalendar {
+            totalContributions
+            weeks {
+              contributionDays {
+                date
+                contributionCount
+              }
+            }
+          }
+        }
+      }
+    }
+    """
+    try:
+        data = request_graphql(
+            query,
+            {
+                "login": USERNAME,
+                "from": f"{start.isoformat()}T00:00:00Z",
+                "to": f"{end.isoformat()}T00:00:00Z",
+            },
         )
-        if batch is None:
-            return None
-        if not batch:
-            break
-
-        events.extend(batch)
-        last_created = batch[-1].get("created_at")
-        if last_created:
-            try:
-                last_date = datetime.fromisoformat(last_created.replace("Z", "+00:00"))
-                if last_date < cutoff:
-                    break
-            except ValueError:
-                pass
-
-    return events
-
-
-def fetch_language_bytes(repositories: list[dict]) -> dict[str, int]:
-    totals: Counter[str] = Counter()
-    candidates = sorted(
-        repositories,
-        key=lambda repo: (
-            repo.get("stargazers_count", 0),
-            repo.get("updated_at", ""),
-        ),
-        reverse=True,
-    )[:12]
-
-    for repo in candidates:
-        url = repo.get("languages_url")
-        if not url:
-            continue
-        languages = optional_json(url)
-        if isinstance(languages, dict):
-            for language, byte_count in languages.items():
-                totals[language] += int(byte_count)
-
-    if totals:
-        return dict(totals)
-
-    # If language endpoints are unavailable, fall back to each repository's
-    # primary language. This fallback is a repository count, not byte share.
-    primary_languages = Counter(
-        repo["language"] for repo in repositories if repo.get("language")
-    )
-    return dict(primary_languages)
-
-
-def build_activity(events: list[dict] | None) -> tuple[list[int], int | None]:
-    days = [date.today() - timedelta(days=offset) for offset in range(29, -1, -1)]
-    counts = {day: 0 for day in days}
-
-    if events is None:
-        return [0] * len(days), None
-
-    for event in events:
-        created_at = event.get("created_at")
-        if not created_at:
-            continue
-        try:
-            event_date = datetime.fromisoformat(
-                created_at.replace("Z", "+00:00")
-            ).date()
-        except ValueError:
-            continue
-        if event_date in counts:
-            counts[event_date] += 1
-
-    values = [counts[day] for day in days]
-    return values, sum(values)
+        user = data.get("user")
+        if not user:
+            raise RuntimeError(f"GitHub user not found: {USERNAME}")
+        return user["contributionsCollection"]["contributionCalendar"]
+    except (HTTPError, URLError, TimeoutError, ValueError, RuntimeError, KeyError) as exc:
+        print(f"Warning: contribution calendar unavailable: {exc}", file=sys.stderr)
+        return None
 
 
 def fallback_avatar() -> list[str]:
     art = [
         "                 .-''''-.",
         "              .-'  .--.  '-.",
-        "             /    /    \\    \\",
+        "             /    /    \\\\    \\\\",
         "            |    |  .-. |    |",
         "            |    | (o o)|    |",
-        "            |    |  /\\  |    |",
-        "             \\    \\ '--'   /",
+        "            |    |  /\\\\  |    |",
+        "             \\\\    \\\\ '--'   /",
         "              '.   '----'  .'",
         "                '-.______.-'",
     ]
@@ -179,7 +152,7 @@ def fallback_avatar() -> list[str]:
 
 
 def avatar_to_ascii(avatar_url: str | None) -> list[str]:
-    """Convert the current GitHub avatar into a proportion-correct ASCII portrait."""
+    """Convert the current GitHub avatar into a square-proportioned ASCII portrait."""
     if not avatar_url:
         return fallback_avatar()
 
@@ -196,91 +169,49 @@ def avatar_to_ascii(avatar_url: str | None) -> list[str]:
 
         with Image.open(BytesIO(image_bytes)) as source:
             image = ImageOps.exif_transpose(source).convert("RGB")
-
-            # GitHub avatars are square. Center-crop defensively if the source
-            # ever changes, then sample a wide character grid. The grid is
-            # intentionally wider than tall to compensate for tall monospace
-            # glyph cells; the rendered portrait itself remains square.
             width, height = image.size
             side = min(width, height)
             left = (width - side) // 2
             top = (height - side) // 2
             image = image.crop((left, top, left + side, top + side))
-            image = image.resize(
-                (AVATAR_WIDTH, AVATAR_HEIGHT),
-                Image.Resampling.LANCZOS,
-            )
-
+            image = image.resize((AVATAR_WIDTH, AVATAR_HEIGHT), Image.Resampling.LANCZOS)
             grayscale = ImageOps.grayscale(image)
             grayscale = ImageOps.autocontrast(grayscale, cutoff=1)
             grayscale = ImageEnhance.Contrast(grayscale).enhance(1.12)
             pixels = list(grayscale.getdata())
 
-        rows = []
-        for row in range(AVATAR_HEIGHT):
-            values = pixels[row * AVATAR_WIDTH : (row + 1) * AVATAR_WIDTH]
-            rows.append(
-                "".join(
-                    ASCII_CHARS[
-                        min(
-                            len(ASCII_CHARS) - 1,
-                            round(pixel / 255 * (len(ASCII_CHARS) - 1)),
-                        )
-                    ]
-                    for pixel in values
-                )
+        return [
+            "".join(
+                ASCII_CHARS[
+                    min(
+                        len(ASCII_CHARS) - 1,
+                        round(pixel / 255 * (len(ASCII_CHARS) - 1)),
+                    )
+                ]
+                for pixel in pixels[row * AVATAR_WIDTH : (row + 1) * AVATAR_WIDTH]
             )
-        return rows
-
+            for row in range(AVATAR_HEIGHT)
+        ]
     except Exception as exc:
-        print(
-            f"Warning: GitHub avatar conversion failed; using fallback art ({exc})",
-            file=sys.stderr,
-        )
+        print(f"Warning: avatar conversion failed; using fallback art ({exc})", file=sys.stderr)
         return fallback_avatar()
+
 
 def collect_data() -> dict:
     profile = fetch_profile()
     repositories = fetch_repositories()
-    events = fetch_public_events()
-
-    languages = fetch_language_bytes(repositories)
-    language_total = sum(languages.values())
-    language_rows = sorted(languages.items(), key=lambda item: item[1], reverse=True)[:4]
-    if language_total:
-        language_rows = [
-            (name, value, round(value / language_total * 100))
-            for name, value in language_rows
-        ]
-    else:
-        language_rows = [(name, value, 0) for name, value in language_rows]
-
-    activity, activity_total = build_activity(events)
-
-    owned = [repo for repo in repositories if not repo.get("fork")]
-    featured_source = owned or repositories
-    featured = sorted(
-        featured_source,
-        key=lambda repo: (
-            repo.get("stargazers_count", 0),
-            repo.get("updated_at", ""),
-        ),
-        reverse=True,
-    )[:3]
+    calendar = fetch_contribution_calendar()
 
     return {
         "name": profile.get("name") or USERNAME,
         "username": profile.get("login") or USERNAME,
+        "bio": profile.get("bio") or "Building useful software and data-driven workflows.",
         "avatar": avatar_to_ascii(profile.get("avatar_url")),
         "public_repos": int(profile.get("public_repos", len(repositories))),
         "stars": sum(int(repo.get("stargazers_count", 0)) for repo in repositories),
         "followers": int(profile.get("followers", 0)),
-        "following": int(profile.get("following", 0)),
-        "commits": fetch_commit_count(),
-        "activity": activity,
-        "activity_total": activity_total,
-        "languages": language_rows,
-        "featured": featured,
+        "contributions": calendar.get("totalContributions") if calendar else None,
+        "weeks": calendar.get("weeks", []) if calendar else [],
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
     }
 
@@ -291,9 +222,16 @@ def number(value) -> str:
     return f"{int(value):,}"
 
 
-def short_text(value: str, limit: int = 23) -> str:
-    value = str(value or "Untitled")
-    return value if len(value) <= limit else value[: limit - 1] + "…"
+def contribution_level(count: int) -> int:
+    if count <= 0:
+        return 0
+    if count == 1:
+        return 1
+    if count <= 3:
+        return 2
+    if count <= 6:
+        return 3
+    return 4
 
 
 def render_svg(theme: str, data: dict) -> str:
@@ -306,10 +244,7 @@ def render_svg(theme: str, data: dict) -> str:
             "text": "#e6edf3",
             "muted": "#8b949e",
             "accent": "#7ee787",
-            "blue": "#79c0ff",
-            "orange": "#ffa657",
-            "purple": "#d2a8ff",
-            "bar_bg": "#30363d",
+            "heat": ["#21262d", "#0e4429", "#006d32", "#26a641", "#39d353"],
         }
     else:
         colors = {
@@ -320,29 +255,26 @@ def render_svg(theme: str, data: dict) -> str:
             "text": "#1f2328",
             "muted": "#656d76",
             "accent": "#1a7f37",
-            "blue": "#0969da",
-            "orange": "#bc4c00",
-            "purple": "#8250df",
-            "bar_bg": "#d8dee4",
+            "heat": ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
         }
 
     c = colors
     parts = [
         '<?xml version="1.0" encoding="UTF-8"?>',
-        '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">',
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">',
         '<style>',
         'text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}',
         '.ascii{white-space:pre;font-size:8.4px;letter-spacing:0px;}',
         '</style>',
-        f'<rect width="1200" height="700" rx="18" fill="{c["background"]}"/>',
+        f'<rect width="1200" height="760" rx="18" fill="{c["background"]}"/>',
         f'<rect x="24" y="16" width="1152" height="36" rx="9" fill="{c["panel"]}" stroke="{c["border"]}"/>',
-        f'<circle cx="43" cy="34" r="5" fill="{c["orange"]}"/>',
+        f'<circle cx="43" cy="34" r="5" fill="#ffa657"/>',
         f'<circle cx="61" cy="34" r="5" fill="{c["accent"]}"/>',
-        f'<circle cx="79" cy="34" r="5" fill="{c["blue"]}"/>',
+        f'<circle cx="79" cy="34" r="5" fill="#79c0ff"/>',
         f'<text x="98" y="39" font-size="13" font-weight="700" fill="{c["text"]}">{escape(USERNAME)}@github:~</text>',
-        f'<text x="1154" y="38" font-size="9" text-anchor="end" letter-spacing="1.2" fill="{c["muted"]}">PROFILE TERMINAL // PUBLIC DATA</text>',
-        f'<rect x="24" y="66" width="365" height="610" rx="14" fill="{c["panel"]}" stroke="{c["border"]}"/>',
-        f'<rect x="408" y="66" width="768" height="610" rx="14" fill="{c["panel"]}" stroke="{c["border"]}"/>',
+        f'<text x="1154" y="38" font-size="9" text-anchor="end" letter-spacing="1.2" fill="{c["muted"]}">PERSONAL GITHUB DASHBOARD</text>',
+        f'<rect x="24" y="66" width="365" height="314" rx="14" fill="{c["panel"]}" stroke="{c["border"]}"/>',
+        f'<rect x="408" y="66" width="768" height="314" rx="14" fill="{c["panel"]}" stroke="{c["border"]}"/>',
     ]
 
     def text(x, y, value, size=12, color=None, weight=400, anchor=None, spacing=None):
@@ -359,8 +291,8 @@ def render_svg(theme: str, data: dict) -> str:
             attrs.append(f'letter-spacing="{spacing}"')
         parts.append(f'<text {" ".join(attrs)}>{escape(str(value))}</text>')
 
-    # Left identity panel and ASCII portrait.
-    text(44, 98, "IDENTITY // 001", 10, c["muted"], 700, spacing=1.2)
+    # Hero: square-proportioned ASCII avatar on the left, identity on the right.
+    text(44, 98, "AVATAR // LIVE FROM GITHUB", 9, c["muted"], 700, spacing=0.9)
     parts.append(
         f'<text x="85" y="128" class="ascii" xml:space="preserve" fill="{c["accent"]}">'
     )
@@ -368,110 +300,90 @@ def render_svg(theme: str, data: dict) -> str:
         y = 128 + index * 8.4
         parts.append(f'<tspan x="85" y="{y:.1f}">{escape(line)}</tspan>')
     parts.append("</text>")
-    parts.append(f'<line x1="44" y1="414" x2="369" y2="414" stroke="{c["border"]}"/>')
 
-    text(44, 452, short_text(data["name"], 22).upper(), 22, c["text"], 700)
-    text(44, 475, f'@{data["username"]}', 12, c["accent"], 600)
-    text(44, 514, "FOCUS", 9, c["muted"], 700, spacing=1.1)
-    text(44, 534, "Developer tooling · CLI · reporting", 11, c["text"])
-    text(44, 562, "WORKSTATION", 9, c["muted"], 700, spacing=1.1)
-    text(44, 582, "macOS · Windows", 11, c["text"])
-    text(44, 610, "PROFILE / GENERATED", 8, c["muted"], 500, spacing=0.8)
+    text(442, 116, "HELLO, I'M", 10, c["muted"], 700, spacing=1.4)
+    text(442, 174, data["name"], 38, c["text"], 700)
+    text(444, 204, f'@{data["username"]}', 13, c["accent"], 600)
+    parts.append(f'<line x1="442" y1="230" x2="1142" y2="230" stroke="{c["border"]}"/>')
+    bio = str(data["bio"]).replace("\n", " ").strip()
+    if len(bio) > 76:
+        bio = bio[:73].rstrip() + "…"
+    text(442, 274, bio, 15, c["text"], 400)
+    text(442, 320, "PUBLIC GITHUB PROFILE", 9, c["muted"], 600, spacing=1.1)
 
-    # Right-side terminal details.
-    text(432, 99, "SYSTEM PROFILE", 15, c["text"], 700, spacing=0.8)
-    text(1154, 98, "LIVE GITHUB TELEMETRY", 9, c["muted"], 600, "end", 1.0)
-
-    details = [
-        ("ROLE", "Software developer"),
-        ("FOCUS", "Developer tooling · CLI · workflow · reporting"),
-        ("ENV", "macOS · Windows"),
-    ]
-    for index, (label, value) in enumerate(details):
-        y = 143 + index * 23
-        text(432, y, label, 9, c["muted"], 700, spacing=0.7)
-        text(535, y, value, 11, c["text"], 500)
-
-    # Metric cards.
+    # Four high-signal GitHub metrics.
     metrics = [
-        ("PUBLIC REPOS", number(data["public_repos"]), "repositories"),
-        ("STARS", number(data["stars"]), "across owned public repos"),
+        ("PUBLIC REPOSITORIES", number(data["public_repos"]), "owned public repositories"),
+        ("TOTAL STARS", number(data["stars"]), "across owned public repositories"),
         ("FOLLOWERS", number(data["followers"]), "GitHub followers"),
-        ("PUBLIC COMMITS", number(data["commits"]), "matched by GitHub author"),
+        ("CONTRIBUTIONS", number(data["contributions"]), "public · last 12 months"),
     ]
-    metric_x = [432, 616, 800, 984]
+    metric_x = [24, 318, 612, 906]
     for index, (label, value, note) in enumerate(metrics):
         x = metric_x[index]
         parts.append(
-            f'<rect x="{x}" y="268" width="172" height="91" rx="10" fill="{c["panel_alt"]}" stroke="{c["border"]}"/>'
+            f'<rect x="{x}" y="402" width="270" height="98" rx="11" fill="{c["panel"]}" stroke="{c["border"]}"/>'
         )
-        text(x + 14, 291, label, 9, c["muted"], 700, spacing=0.6)
-        text(x + 14, 326, value, 25, c["text"], 700)
-        text(x + 14, 346, note, 8, c["muted"], 400)
+        text(x + 18, 429, label, 9, c["muted"], 700, spacing=0.65)
+        text(x + 18, 469, value, 27, c["text"], 700)
+        text(x + 18, 487, note, 8, c["muted"], 400)
 
-    # Public activity chart.
+    # One-year GitHub contribution calendar.
     parts.append(
-        f'<rect x="432" y="375" width="350" height="168" rx="10" fill="{c["panel_alt"]}" stroke="{c["border"]}"/>'
+        f'<rect x="24" y="520" width="1152" height="190" rx="11" fill="{c["panel"]}" stroke="{c["border"]}"/>'
     )
-    text(450, 402, "PUBLIC ACTIVITY // 30 DAYS", 10, c["text"], 700, spacing=0.5)
-    activity_total = data["activity_total"]
-    activity_label = "unavailable" if activity_total is None else f"{activity_total:,} events"
-    text(450, 423, activity_label, 9, c["muted"])
-    values = data["activity"]
-    maximum = max(values) if values else 0
-    chart_x, baseline, bar_width, gap, chart_height = 450, 510, 7.2, 3.0, 52
-    for index, value in enumerate(values):
-        height = 3 if maximum == 0 else max(3, chart_height * value / maximum)
-        x = chart_x + index * (bar_width + gap)
-        y = baseline - height
-        opacity = 0.32 if value == 0 else 0.55 + 0.45 * value / maximum
+    text(44, 550, "CONTRIBUTION ACTIVITY // LAST 12 MONTHS", 10, c["text"], 700, spacing=0.55)
+    contribution_total = (
+        "unavailable" if data["contributions"] is None
+        else f'{number(data["contributions"])} public contributions'
+    )
+    text(1154, 550, contribution_total, 9, c["muted"], 500, "end")
+
+    weeks = data["weeks"]
+    cell_size = 11
+    gap = 3
+    step = cell_size + gap
+    grid_width = max(0, len(weeks) * step - gap)
+    start_x = (1200 - grid_width) / 2 if weeks else 230
+    start_y = 590
+
+    previous_month = None
+    for week_index, week in enumerate(weeks):
+        days = week.get("contributionDays", [])
+        if days:
+            try:
+                first_day = date.fromisoformat(days[0]["date"])
+                month_key = (first_day.year, first_day.month)
+                if month_key != previous_month:
+                    text(start_x + week_index * step, 578, first_day.strftime("%b").upper(), 8, c["muted"])
+                    previous_month = month_key
+            except (KeyError, ValueError):
+                pass
+
+        for day_index, day in enumerate(days):
+            count = int(day.get("contributionCount", 0))
+            level = contribution_level(count)
+            x = start_x + week_index * step
+            y = start_y + day_index * step
+            parts.append(
+                f'<rect x="{x:.1f}" y="{y:.1f}" width="{cell_size}" height="{cell_size}" rx="2" fill="{c["heat"][level]}"/>'
+            )
+
+    if not weeks:
+        text(230, 635, "Contribution calendar unavailable", 11, c["muted"])
+
+    # Activity intensity legend.
+    legend_y = 696
+    text(924, legend_y + 8, "LESS", 8, c["muted"])
+    for index, color in enumerate(c["heat"]):
+        x = 960 + index * 15
         parts.append(
-            f'<rect x="{x:.1f}" y="{y:.1f}" width="{bar_width}" height="{height:.1f}" rx="2" fill="{c["accent"]}" opacity="{opacity:.2f}"/>'
+            f'<rect x="{x}" y="{legend_y}" width="10" height="10" rx="2" fill="{color}"/>'
         )
-    parts.append(f'<line x1="450" y1="{baseline + 1}" x2="761" y2="{baseline + 1}" stroke="{c["border"]}"/>')
-    text(450, 531, "30 DAYS AGO", 8, c["muted"])
-    text(761, 531, "TODAY", 8, c["muted"], 500, "end")
+    text(1042, legend_y + 8, "MORE", 8, c["muted"])
 
-    # Language distribution.
-    parts.append(
-        f'<rect x="798" y="375" width="358" height="168" rx="10" fill="{c["panel_alt"]}" stroke="{c["border"]}"/>'
-    )
-    text(816, 402, "LANGUAGE MIX // TOP 4", 10, c["text"], 700, spacing=0.5)
-    languages = data["languages"]
-    language_colors = [c["blue"], c["accent"], c["orange"], c["purple"]]
-    if not languages:
-        text(816, 455, "No public language data", 10, c["muted"])
-    else:
-        for index, (language, amount, percent) in enumerate(languages[:4]):
-            y = 438 + index * 24
-            text(816, y + 4, short_text(language, 13), 9, c["text"], 600)
-            parts.append(
-                f'<rect x="925" y="{y - 5}" width="176" height="7" rx="3.5" fill="{c["bar_bg"]}"/>'
-            )
-            width = max(2, 176 * percent / 100) if percent else 2
-            parts.append(
-                f'<rect x="925" y="{y - 5}" width="{width:.1f}" height="7" rx="3.5" fill="{language_colors[index]}"/>'
-            )
-            text(1138, y + 4, f"{percent}%", 9, c["muted"], 500, "end")
-
-    # Featured repositories.
-    parts.append(
-        f'<rect x="432" y="555" width="724" height="91" rx="10" fill="{c["panel_alt"]}" stroke="{c["border"]}"/>'
-    )
-    text(450, 580, "FEATURED REPOSITORIES", 10, c["text"], 700, spacing=0.5)
-    featured = data["featured"]
-    if not featured:
-        text(450, 615, "No public repositories found", 10, c["muted"])
-    else:
-        column_x = [450, 690, 930]
-        for index, repo in enumerate(featured):
-            x = column_x[index]
-            text(x, 609, short_text(repo.get("name", "repository"), 24), 11, c["blue"], 600)
-            stars = int(repo.get("stargazers_count", 0))
-            language = repo.get("language") or "—"
-            text(x, 630, f"★ {stars:,}   ·   {language}", 9, c["muted"])
-
-    text(432, 665, "PUBLIC DATA ONLY  ·  UPDATED " + data["updated"], 8, c["muted"], 500, spacing=0.5)
+    text(24, 744, "PUBLIC CONTRIBUTIONS ONLY  ·  UPDATED " + data["updated"], 8, c["muted"], 500, spacing=0.45)
+    text(1176, 744, "github.com/" + USERNAME, 8, c["muted"], 500, "end")
     parts.append("</svg>")
     return "\n".join(parts)
 
