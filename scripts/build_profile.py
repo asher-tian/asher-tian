@@ -9,6 +9,7 @@ import sys
 from collections import Counter
 from datetime import date, datetime, timedelta, timezone
 from html import escape
+from io import BytesIO
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote
@@ -18,8 +19,11 @@ ROOT = Path(__file__).resolve().parents[1]
 USERNAME = os.getenv("GITHUB_USERNAME", "asher-tian")
 API_ROOT = "https://api.github.com"
 TOKEN = os.getenv("GITHUB_TOKEN")
-AVATAR_WIDTH = 34
-AVATAR_HEIGHT = 37
+# Monospace glyphs are taller than they are wide. A 48x29 sampling grid
+# compensates for the font cell aspect ratio so the rendered portrait is square.
+AVATAR_WIDTH = 48
+AVATAR_HEIGHT = 29
+ASCII_CHARS = "@%#*+=-:. "
 
 
 def request_json(url: str):
@@ -174,18 +178,66 @@ def fallback_avatar() -> list[str]:
     return canvas
 
 
-def load_ascii_portrait() -> list[str]:
-    """Load the privacy-preserving ASCII portrait committed to the repository."""
-    portrait_path = ROOT / "assets" / "family-portrait.ascii"
-    if not portrait_path.exists():
+def avatar_to_ascii(avatar_url: str | None) -> list[str]:
+    """Convert the current GitHub avatar into a proportion-correct ASCII portrait."""
+    if not avatar_url:
         return fallback_avatar()
 
-    lines = portrait_path.read_text(encoding="utf-8").splitlines()
-    if len(lines) != AVATAR_HEIGHT:
-        raise ValueError(
-            f"Expected {AVATAR_HEIGHT} ASCII portrait rows, found {len(lines)}"
+    try:
+        from PIL import Image, ImageEnhance, ImageOps
+
+        separator = "&" if "?" in avatar_url else "?"
+        request = Request(
+            f"{avatar_url}{separator}s=460",
+            headers={"User-Agent": f"{USERNAME}-profile-readme"},
         )
-    return [line[:AVATAR_WIDTH].ljust(AVATAR_WIDTH) for line in lines]
+        with urlopen(request, timeout=20) as response:
+            image_bytes = response.read()
+
+        with Image.open(BytesIO(image_bytes)) as source:
+            image = ImageOps.exif_transpose(source).convert("RGB")
+
+            # GitHub avatars are square. Center-crop defensively if the source
+            # ever changes, then sample a wide character grid. The grid is
+            # intentionally wider than tall to compensate for tall monospace
+            # glyph cells; the rendered portrait itself remains square.
+            width, height = image.size
+            side = min(width, height)
+            left = (width - side) // 2
+            top = (height - side) // 2
+            image = image.crop((left, top, left + side, top + side))
+            image = image.resize(
+                (AVATAR_WIDTH, AVATAR_HEIGHT),
+                Image.Resampling.LANCZOS,
+            )
+
+            grayscale = ImageOps.grayscale(image)
+            grayscale = ImageOps.autocontrast(grayscale, cutoff=1)
+            grayscale = ImageEnhance.Contrast(grayscale).enhance(1.12)
+            pixels = list(grayscale.getdata())
+
+        rows = []
+        for row in range(AVATAR_HEIGHT):
+            values = pixels[row * AVATAR_WIDTH : (row + 1) * AVATAR_WIDTH]
+            rows.append(
+                "".join(
+                    ASCII_CHARS[
+                        min(
+                            len(ASCII_CHARS) - 1,
+                            round(pixel / 255 * (len(ASCII_CHARS) - 1)),
+                        )
+                    ]
+                    for pixel in values
+                )
+            )
+        return rows
+
+    except Exception as exc:
+        print(
+            f"Warning: GitHub avatar conversion failed; using fallback art ({exc})",
+            file=sys.stderr,
+        )
+        return fallback_avatar()
 
 def collect_data() -> dict:
     profile = fetch_profile()
@@ -219,7 +271,7 @@ def collect_data() -> dict:
     return {
         "name": profile.get("name") or USERNAME,
         "username": profile.get("login") or USERNAME,
-        "avatar": load_ascii_portrait(),
+        "avatar": avatar_to_ascii(profile.get("avatar_url")),
         "public_repos": int(profile.get("public_repos", len(repositories))),
         "stars": sum(int(repo.get("stargazers_count", 0)) for repo in repositories),
         "followers": int(profile.get("followers", 0)),
@@ -280,7 +332,7 @@ def render_svg(theme: str, data: dict) -> str:
         '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">',
         '<style>',
         'text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}',
-        '.ascii{white-space:pre;font-size:7.5px;letter-spacing:0px;}',
+        '.ascii{white-space:pre;font-size:8.4px;letter-spacing:0px;}',
         '</style>',
         f'<rect width="1200" height="700" rx="18" fill="{c["background"]}"/>',
         f'<rect x="24" y="16" width="1152" height="36" rx="9" fill="{c["panel"]}" stroke="{c["border"]}"/>',
@@ -310,10 +362,10 @@ def render_svg(theme: str, data: dict) -> str:
     # Left identity panel and ASCII portrait.
     text(44, 98, "IDENTITY // 001", 10, c["muted"], 700, spacing=1.2)
     parts.append(
-        f'<text x="130" y="124" class="ascii" xml:space="preserve" fill="{c["accent"]}">'
+        f'<text x="85" y="128" class="ascii" xml:space="preserve" fill="{c["accent"]}">'
     )
     for index, line in enumerate(data["avatar"]):
-        y = 124 + index * 7.4
+        y = 128 + index * 8.4
         parts.append(f'<tspan x="130" y="{y:.1f}">{escape(line)}</tspan>')
     parts.append("</text>")
     parts.append(f'<line x1="44" y1="414" x2="369" y2="414" stroke="{c["border"]}"/>')
