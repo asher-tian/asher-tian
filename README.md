@@ -17,5 +17,5 @@
 </p>
 
 <p align="center">
-  <sub>Dashboard uses public GitHub data only · Automatically refreshed daily</sub>
+  <sub>Live GitHub avatar · Square-proportioned ASCII portrait · Public data refreshed daily</sub>
 </p>
