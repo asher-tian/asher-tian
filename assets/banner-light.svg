@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" fill="none">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1200" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F4EA"/>
+      <stop offset="1" stop-color="#EAE8DA"/>
+    </linearGradient>
+    <linearGradient id="far" x1="630" y1="36" x2="1110" y2="224" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A9BDB0"/>
+      <stop offset="1" stop-color="#8CA79C"/>
+    </linearGradient>
+    <linearGradient id="mid" x1="740" y1="80" x2="1160" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6F9387"/>
+      <stop offset="1" stop-color="#4F756D"/>
+    </linearGradient>
+    <linearGradient id="near" x1="790" y1="120" x2="1180" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#456B65"/>
+      <stop offset="1" stop-color="#2D514F"/>
+    </linearGradient>
+    <clipPath id="clip"><rect width="1200" height="220" rx="16"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip)">
+    <rect width="1200" height="220" fill="url(#paper)"/>
+    <circle cx="1005" cy="66" r="35" fill="#D7C99F" opacity=".72"/>
+    <circle cx="1005" cy="66" r="49" stroke="#C8B98F" stroke-opacity=".42"/>
+    <path d="M480 220L646 116L714 143L835 48L947 140L1036 88L1200 185V220H480Z" fill="url(#far)" opacity=".76"/>
+    <path d="M620 220L786 104L850 145L963 72L1080 154L1140 124L1200 164V220H620Z" fill="url(#mid)" opacity=".92"/>
+    <path d="M760 220L916 135L974 166L1085 96L1200 182V220H760Z" fill="url(#near)"/>
+    <path d="M835 48L810 91L835 80L857 95L835 48Z" fill="#F7F4EA" fill-opacity=".76"/>
+    <path d="M963 72L938 111L963 99L985 114L963 72Z" fill="#F7F4EA" fill-opacity=".62"/>
+    <path d="M646 116L620 151L646 139L665 151L646 116Z" fill="#F7F4EA" fill-opacity=".52"/>
+    <path d="M680 183C760 167 818 184 886 174C958 163 1030 179 1092 166C1138 157 1172 163 1200 154" stroke="#E9E8D9" stroke-width="2" stroke-opacity=".7"/>
+    <path d="M720 201C805 190 870 204 945 193C1030 181 1102 198 1200 182" stroke="#D4DED0" stroke-width="1.5" stroke-opacity=".7"/>
+    <circle cx="78" cy="74" r="4" fill="#B64C38"/>
+    <text x="98" y="82" fill="#718A7F" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="600" letter-spacing="3">PROFILE / 01</text>
+    <text x="94" y="132" fill="#263E3C" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="600" letter-spacing="1.5">ASHER TIAN</text>
+    <path d="M96 151H326" stroke="#B9C6B8" stroke-width="1"/>
+    <text x="98" y="177" fill="#718A7F" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="600" letter-spacing="2.6">SOFTWARE · DATA · TOOLING</text>
+    <path d="M0 219.5H1200" stroke="#C9C5B5" stroke-opacity=".65"/>
+  </g>
+</svg>

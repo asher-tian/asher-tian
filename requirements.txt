@@ -1,2 +1,0 @@
-# Pillow is used to convert the live GitHub avatar into ASCII.
-Pillow>=10.0,<13.0
