@@ -97,7 +97,6 @@ def fetch_contribution_calendar() -> dict | None:
         contributionsCollection(
           from: $from
           to: $to
-          includePrivateContributions: false
         ) {
           contributionCalendar {
             totalContributions
