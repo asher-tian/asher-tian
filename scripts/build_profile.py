@@ -376,9 +376,7 @@ def render_svg(theme: str, data: dict) -> str:
     text(44, 534, "Developer tooling · CLI · reporting", 11, c["text"])
     text(44, 562, "WORKSTATION", 9, c["muted"], 700, spacing=1.1)
     text(44, 582, "macOS · Windows", 11, c["text"])
-    text(44, 610, "AI TOOLCHAIN", 9, c["muted"], 700, spacing=1.1)
-    text(44, 630, "Copilot · Claude Code", 11, c["text"])
-    text(44, 654, "STATUS / PROFILE GENERATED", 8, c["muted"], 500, spacing=0.8)
+    text(44, 610, "PROFILE / GENERATED", 8, c["muted"], 500, spacing=0.8)
 
     # Right-side terminal details.
     text(432, 99, "SYSTEM PROFILE", 15, c["text"], 700, spacing=0.8)
@@ -387,9 +385,7 @@ def render_svg(theme: str, data: dict) -> str:
     details = [
         ("ROLE", "Software developer"),
         ("FOCUS", "Developer tooling · CLI · workflow · reporting"),
-        ("STACK", "Python · Go · Vue · JavaScript"),
         ("ENV", "macOS · Windows"),
-        ("TOOLS", "VS Code · PyCharm · iTerm2 · Copilot · Claude Code"),
     ]
     for index, (label, value) in enumerate(details):
         y = 143 + index * 23
