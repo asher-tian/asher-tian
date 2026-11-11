@@ -50,5 +50,6 @@ jobs:
             echo "No profile changes."
           else
             git commit -m "chore: refresh GitHub profile"
+            git pull --rebase origin main
             git push
           fi
