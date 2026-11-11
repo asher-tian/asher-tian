@@ -1,1 +1,1 @@
-Pillow>=10.0,<13.0
+# No third-party dependencies; profile generation uses the Python standard library.
