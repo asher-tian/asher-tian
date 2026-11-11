@@ -366,7 +366,7 @@ def render_svg(theme: str, data: dict) -> str:
     )
     for index, line in enumerate(data["avatar"]):
         y = 128 + index * 8.4
-        parts.append(f'<tspan x="130" y="{y:.1f}">{escape(line)}</tspan>')
+        parts.append(f'<tspan x="85" y="{y:.1f}">{escape(line)}</tspan>')
     parts.append("</text>")
     parts.append(f'<line x1="44" y1="414" x2="369" y2="414" stroke="{c["border"]}"/>')
 
