@@ -6,16 +6,8 @@
     />
     <img
       src="https://raw.githubusercontent.com/asher-tian/asher-tian/main/light_mode.svg"
-      alt="Asher Tian — developer terminal profile"
+      alt="Asher Tian — GitHub terminal dashboard"
       width="100%"
     />
   </picture>
-</p>
-
-<p align="center">
-  <sub>Python · Go · Vue · Developer tooling · Workflow & reporting</sub>
-</p>
-
-<p align="center">
-  <sub>Live GitHub avatar · Square-proportioned ASCII portrait · Public data refreshed daily</sub>
 </p>
