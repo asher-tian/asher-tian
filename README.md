@@ -12,6 +12,4 @@
   </picture>
 </p>
 
-**Stack** · Python · Go · Vue
-
 **Focus** · CLI tooling · data analysis · developer workflows
