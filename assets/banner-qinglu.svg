@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+<title id="title">Asher Tian — Qinglü Shanshui</title>
+<desc id="desc">A minimalist blue-green Chinese landscape with layered mountains, golden moon, drifting mist and water.</desc>
+<defs>
+  <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#F6F1E5"/><stop offset="1" stop-color="#E9EBDD"/></linearGradient>
+  <linearGradient id="far" x2="0" y2="1"><stop stop-color="#C9D9C8"/><stop offset="1" stop-color="#AFC9BD"/></linearGradient>
+  <linearGradient id="mid" x2=".2" y2="1"><stop stop-color="#9CC5B0"/><stop offset="1" stop-color="#5F9B91"/></linearGradient>
+  <linearGradient id="near" x2=".3" y2="1"><stop stop-color="#438D8B"/><stop offset="1" stop-color="#174F5C"/></linearGradient>
+  <linearGradient id="water" x2="0" y2="1"><stop stop-color="#AFC9BC"/><stop offset="1" stop-color="#E5E7D8"/></linearGradient>
+  <radialGradient id="moon"><stop stop-color="#F8E6AE"/><stop offset="1" stop-color="#D9B96F"/></radialGradient>
+  <pattern id="grain" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="3" cy="7" r=".65" fill="#9B8E70" opacity=".12"/><circle cx="19" cy="18" r=".55" fill="#9B8E70" opacity=".1"/></pattern>
+  <clipPath id="right"><rect x="400" y="0" width="800" height="400"/></clipPath>
+</defs>
+<rect width="1200" height="400" fill="url(#paper)"/><rect width="1200" height="400" fill="url(#grain)"/>
+<g fill="#173F3B">
+  <text x="68" y="190" font-family="Georgia, 'Times New Roman', serif" font-size="67" letter-spacing="8">ASHER TIAN</text>
+  <text x="73" y="238" font-family="Arial, Helvetica, sans-serif" font-size="17" letter-spacing="6" fill="#55756C">SOFTWARE · DATA · TOOLING</text>
+</g>
+<g clip-path="url(#right)">
+  <circle cx="876" cy="77" r="42" fill="url(#moon)" opacity=".9"/>
+  <path d="M470 118 C590 78 678 116 765 96 S946 90 1110 45" fill="none" stroke="#D7BC7A" stroke-width="2" opacity=".45"/>
+  <path d="M405 282 L493 218 546 231 620 157 674 189 746 122 813 167 873 107 943 166 1008 104 1072 153 1142 83 1210 132 1210 342 405 342Z" fill="url(#far)" opacity=".9"/>
+  <path d="M430 313 L520 255 581 273 663 194 720 225 798 142 853 180 926 126 982 191 1052 126 1102 177 1198 116 1220 400 430 400Z" fill="url(#mid)" stroke="#CBAE6D" stroke-width="2" opacity=".94"/>
+  <path d="M682 400 L752 302 802 311 849 238 895 260 953 175 1001 204 1050 121 1100 158 1144 82 1210 105 1210 400Z" fill="url(#near)" stroke="#D3B56D" stroke-width="2"/>
+  <path d="M822 400 L884 325 922 332 962 270 1002 286 1054 214 1096 239 1144 170 1204 194 1210 400Z" fill="#1D6570" opacity=".72"/>
+  <path d="M400 304 C520 278 574 315 670 293 S838 287 931 306 1090 274 1210 291 L1210 400 400 400Z" fill="url(#water)"/>
+  <g fill="none" stroke="#E9D49A" stroke-width="2" opacity=".75">
+    <path d="M522 327 C650 315 755 338 872 326 S1080 322 1210 332"/>
+    <path d="M675 351 C792 342 896 360 1015 349 S1134 347 1210 353"/>
+    <path d="M846 374 C958 366 1060 380 1200 371"/>
+  </g>
+  <g fill="none" stroke="#F8F4E8" stroke-width="14" opacity=".66">
+    <path d="M414 274 C520 242 601 270 689 244 S844 254 933 226 1090 241 1215 203"/>
+    <path d="M500 302 C601 281 677 304 761 281 S922 293 1005 270 1137 282 1215 257"/>
+  </g>
+  <g fill="#174E4C">
+    <path d="M1001 202 q-20 -27 -39 -20 q18 -4 32 9 q-11 -26 -31 -32 q28 6 43 34 q10 -19 29 -22 q-18 10 -23 27Z"/>
+    <path d="M1118 250 q-18 -24 -35 -17 q16 -3 29 8 q-9 -22 -27 -27 q24 5 37 29 q9 -16 25 -19 q-15 9 -19 23Z"/>
+    <path d="M885 282 q-15 -20 -30 -14 q13 -3 25 7 q-8 -18 -23 -23 q21 4 32 25 q8 -14 22 -16 q-13 7 -17 20Z"/>
+  </g>
+  <g stroke="#D9C17D" stroke-width="1.4" fill="none" opacity=".7">
+    <path d="M741 203 l35 -34 22 9 33 -45"/><path d="M965 167 l31 -34 24 11 30 -42"/><path d="M1083 225 l26 -28 20 7 27 -35"/>
+  </g>
+</g>
+</svg>

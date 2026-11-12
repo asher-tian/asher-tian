@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+<title id="title">Asher Tian — Song Landscape</title>
+<desc id="desc">A monumental Northern Song inspired mountain scene with ink-gray cliffs, a waterfall, pine trees and a small pavilion.</desc>
+<defs>
+  <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#F1E7D6"/><stop offset="1" stop-color="#E6E1D3"/></linearGradient>
+  <linearGradient id="stone" x2=".8" y2="1"><stop stop-color="#A9AA96"/><stop offset=".55" stop-color="#777F70"/><stop offset="1" stop-color="#454F49"/></linearGradient>
+  <linearGradient id="shadow" x2="1" y2="1"><stop stop-color="#7B8578"/><stop offset="1" stop-color="#394943"/></linearGradient>
+  <pattern id="papergrain" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="5" cy="8" r=".6" fill="#8F826D" opacity=".13"/><circle cx="20" cy="19" r=".5" fill="#8F826D" opacity=".1"/></pattern>
+</defs>
+<rect width="1200" height="400" fill="url(#paper)"/><rect width="1200" height="400" fill="url(#papergrain)"/>
+<text x="68" y="190" font-family="Georgia, 'Times New Roman', serif" font-size="67" letter-spacing="8" fill="#343D37">ASHER TIAN</text>
+<text x="73" y="238" font-family="Arial, Helvetica, sans-serif" font-size="17" letter-spacing="6" fill="#72796D">SOFTWARE · DATA · TOOLING</text>
+<path d="M430 300 L514 242 570 257 648 177 703 205 772 122 832 155 895 82 957 132 1016 54 1080 104 1148 25 1220 67 1220 400 430 400Z" fill="#C6C5B2" opacity=".6"/>
+<path d="M515 400 L566 285 611 270 650 188 686 205 735 104 781 127 832 18 879 61 923 0 1004 49 1050 0 1124 57 1182 14 1220 31 1220 400Z" fill="url(#stone)"/>
+<path d="M775 400 L812 280 854 254 883 173 917 189 947 102 982 127 1016 52 1054 75 1086 0 1132 26 1165 0 1220 16 1220 400Z" fill="url(#shadow)" opacity=".88"/>
+<path d="M826 0 L858 42 876 17 898 63 922 28 943 83 967 52 985 105 1008 75 1030 127 1056 98 1074 158 1100 125 1120 190 1150 157 1170 225 1200 190 1220 250 1220 0Z" fill="#687366" opacity=".34"/>
+<path d="M922 99 C914 133 927 153 917 181 C908 209 926 234 915 267 C907 291 920 317 911 347" fill="none" stroke="#F4F0E5" stroke-width="13" opacity=".85"/>
+<path d="M922 99 C914 133 927 153 917 181 C908 209 926 234 915 267 C907 291 920 317 911 347" fill="none" stroke="#D9DED3" stroke-width="4"/>
+<path d="M420 286 C540 259 604 289 698 262 S846 280 930 252 1090 264 1220 230" fill="none" stroke="#F8F4EA" stroke-width="24" opacity=".8"/>
+<path d="M435 327 C552 305 641 331 747 303 S932 315 1037 291 1147 298 1220 280" fill="none" stroke="#EDE9DC" stroke-width="16" opacity=".75"/>
+<g fill="#34483F">
+  <path d="M1054 218 q-38 -47 -73 -34 q30 -7 59 14 q-17 -39 -54 -47 q50 8 77 53 q18 -31 48 -35 q-32 17 -39 44Z"/>
+  <path d="M1132 272 q-28 -34 -53 -25 q22 -5 43 10 q-13 -29 -40 -35 q36 6 56 39 q13 -23 36 -26 q-24 13 -29 33Z"/>
+  <path d="M804 250 q-24 -30 -47 -22 q20 -4 38 9 q-11 -25 -35 -30 q32 5 49 34 q11 -20 31 -23 q-20 11 -24 29Z"/>
+</g>
+<g stroke="#3B4B42" stroke-width="5" fill="none" stroke-linecap="round">
+  <path d="M1080 225 q-4 -27 3 -50"/><path d="M1154 278 q-3 -21 2 -38"/><path d="M827 256 q-3 -18 1 -31"/>
+</g>
+<g transform="translate(1068 302)" fill="#4D5148" stroke="#4D5148" stroke-width="2">
+  <path d="M0 17 L45 -5 90 17Z" fill="#4C5149"/><path d="M9 17 V48 M45 17 V48 M81 17 V48" fill="none"/>
+  <path d="M-5 49 H95" fill="none" stroke-width="3"/><path d="M-10 16 L45 -13 100 16" fill="none" stroke-width="4"/>
+</g>
+</svg>

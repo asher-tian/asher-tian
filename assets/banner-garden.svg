@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+<title id="title">Asher Tian — Jiangnan Garden</title>
+<desc id="desc">A quiet Jiangnan garden with a circular moon gate framing misty hills, a pavilion, bamboo and still water.</desc>
+<defs>
+  <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#F6F1E6"/><stop offset="1" stop-color="#E9EBDD"/></linearGradient>
+  <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#E6E1D2"/><stop offset="1" stop-color="#C9C8B8"/></linearGradient>
+  <linearGradient id="lake" x2="0" y2="1"><stop stop-color="#B8C9BE"/><stop offset="1" stop-color="#E0E5D9"/></linearGradient>
+  <clipPath id="gate"><circle cx="922" cy="204" r="145"/></clipPath>
+  <pattern id="grain" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="5" cy="8" r=".6" fill="#8F826D" opacity=".12"/><circle cx="20" cy="19" r=".5" fill="#8F826D" opacity=".1"/></pattern>
+</defs>
+<rect width="1200" height="400" fill="url(#paper)"/><rect width="1200" height="400" fill="url(#grain)"/>
+<text x="68" y="190" font-family="Georgia, 'Times New Roman', serif" font-size="67" letter-spacing="8" fill="#31463B">ASHER TIAN</text>
+<text x="73" y="238" font-family="Arial, Helvetica, sans-serif" font-size="17" letter-spacing="6" fill="#718276">SOFTWARE · DATA · TOOLING</text>
+<path d="M500 0 H1200 V72 Q1100 49 1030 61 Q930 76 850 52 Q750 27 650 58 L500 40Z" fill="url(#wall)"/>
+<path d="M500 39 Q710 8 900 36 T1200 34" fill="none" stroke="#68766A" stroke-width="10"/>
+<path d="M500 52 Q710 22 900 49 T1200 47" fill="none" stroke="#A2A18F" stroke-width="3"/>
+<circle cx="922" cy="204" r="162" fill="#D5D1C3" stroke="#A9AA9B" stroke-width="8"/>
+<circle cx="922" cy="204" r="149" fill="#F2EFE4" stroke="#F8F4E9" stroke-width="4"/>
+<g clip-path="url(#gate)">
+  <rect x="760" y="55" width="324" height="300" fill="#E7EBDD"/>
+  <path d="M760 214 L815 163 860 179 905 123 955 161 1008 119 1085 177 1085 270 760 270Z" fill="#B7C9B9"/>
+  <path d="M760 243 L818 196 864 212 916 161 960 187 1012 152 1085 210 1085 285 760 285Z" fill="#8FAF9B" opacity=".72"/>
+  <rect x="760" y="250" width="324" height="115" fill="url(#lake)"/>
+  <path d="M760 259 C850 246 938 269 1085 252" fill="none" stroke="#F8F5EA" stroke-width="12" opacity=".8"/>
+  <g stroke="#E9E9DC" stroke-width="2" opacity=".8"><path d="M782 290 H1068"/><path d="M810 312 H1042"/><path d="M850 334 H1010"/></g>
+  <g fill="#5B7865"><path d="M814 249 q-17 -32 -32 -23 q14 -4 25 9 q-7 -18 -22 -23 q20 4 30 26Z"/><path d="M1020 245 q-16 -30 -31 -21 q13 -4 24 8 q-7 -17 -21 -21 q19 4 28 24Z"/></g>
+  <g transform="translate(956 216)" stroke="#46584A" stroke-width="3" fill="none">
+    <path d="M0 14 L42 -8 84 14Z" fill="#526153"/><path d="M9 14 V48 M42 14 V48 M75 14 V48"/><path d="M-5 49 H89" stroke-width="4"/><path d="M-9 13 L42 -17 93 13" stroke-width="4"/>
+  </g>
+</g>
+<g fill="none" stroke="#4E6B52" stroke-width="5" stroke-linecap="round">
+  <path d="M1160 8 Q1130 92 1155 184 T1170 370"/><path d="M1185 22 Q1150 65 1102 85"/><path d="M1172 70 Q1127 92 1090 127"/><path d="M1165 122 Q1122 139 1097 174"/>
+</g>
+<g fill="#68866D">
+  <path d="M1150 82 Q1096 45 1060 47 Q1104 63 1150 82Z"/><path d="M1145 111 Q1090 82 1052 88 Q1094 99 1145 111Z"/><path d="M1161 151 Q1110 121 1074 130 Q1117 139 1161 151Z"/><path d="M1174 196 Q1126 164 1090 175 Q1131 184 1174 196Z"/>
+  <path d="M1156 250 Q1115 219 1076 230 Q1119 239 1156 250Z"/><path d="M1165 300 Q1120 273 1083 283 Q1122 291 1165 300Z"/>
+</g>
+<g fill="#B85F49"><circle cx="678" cy="39" r="5"/><circle cx="703" cy="58" r="4"/><circle cx="727" cy="24" r="5"/><circle cx="747" cy="47" r="4"/><circle cx="690" cy="77" r="3.5"/></g>
+<path d="M650 90 Q695 47 735 24 Q752 13 770 4" fill="none" stroke="#705B49" stroke-width="3"/>
+</svg>
