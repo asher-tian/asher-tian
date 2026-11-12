@@ -12,4 +12,3 @@
   </picture>
 </p>
 
-**Focus** · CLI tooling · data analysis · developer workflows
