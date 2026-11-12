@@ -30,8 +30,6 @@
     <path d="M646 116L620 151L646 139L665 151L646 116Z" fill="#D6DCCB" fill-opacity=".4"/>
     <path d="M680 183C760 167 818 184 886 174C958 163 1030 179 1092 166C1138 157 1172 163 1200 154" stroke="#A9C0B1" stroke-width="2" stroke-opacity=".42"/>
     <path d="M720 201C805 190 870 204 945 193C1030 181 1102 198 1200 182" stroke="#8EA99B" stroke-width="1.5" stroke-opacity=".38"/>
-    <circle cx="78" cy="74" r="4" fill="#C16B54"/>
-    <text x="98" y="82" fill="#91A99B" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="600" letter-spacing="3">PROFILE / 01</text>
     <text x="94" y="132" fill="#E3E8DC" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="600" letter-spacing="1.5">ASHER TIAN</text>
     <path d="M96 151H326" stroke="#526C64" stroke-width="1"/>
     <text x="98" y="177" fill="#91A99B" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="600" letter-spacing="2.6">SOFTWARE · DATA · TOOLING</text>
