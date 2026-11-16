@@ -1,102 +1,126 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" role="img" aria-labelledby="title desc">
   <title id="title">Asher Tian — Jiangnan Garden, Light</title>
-  <desc id="desc">A centered personal identity framed by a quiet Jiangnan garden, with a moon gate, pavilion, bamboo and plum blossoms.</desc>
+  <desc id="desc">A balanced Jiangnan courtyard scene with a central moon gate framing distant hills and a pavilion, bamboo, plum blossoms and a quiet reflecting pond.</desc>
   <defs>
     <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#F6F2E7"/><stop offset="1" stop-color="#E8EBDD"/>
+      <stop stop-color="#F7F3E8"/><stop offset="1" stop-color="#E8EBDD"/>
     </linearGradient>
-    <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#E6E1D2"/><stop offset="1" stop-color="#C8CBBB"/>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#E8E2D3"/><stop offset="1" stop-color="#C9C9B9"/>
+    </linearGradient>
+    <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#C9C8B8"/><stop offset="1" stop-color="#9FA99B"/>
     </linearGradient>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop stop-color="#E8EEE2"/><stop offset="1" stop-color="#C9D9C9"/>
+      <stop stop-color="#EEF0E4"/><stop offset="1" stop-color="#C9D9CA"/>
     </linearGradient>
     <linearGradient id="far" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#B8CBBB"/><stop offset="1" stop-color="#91B1A1"/>
+      <stop stop-color="#B9CDBB"/><stop offset="1" stop-color="#91B2A1"/>
     </linearGradient>
     <linearGradient id="mid" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#82A995"/><stop offset="1" stop-color="#5E897A"/>
+      <stop stop-color="#83A995"/><stop offset="1" stop-color="#5B8778"/>
     </linearGradient>
-    <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1">
-      <stop stop-color="#B7CEC2"/><stop offset="1" stop-color="#E0E6D9"/>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#AFC8BC"/><stop offset="1" stop-color="#E1E7DA"/>
     </linearGradient>
-    <radialGradient id="glow" cx="50%" cy="48%" r="60%">
-      <stop stop-color="#FFFDF4" stop-opacity=".68"/><stop offset="1" stop-color="#FFFDF4" stop-opacity="0"/>
+    <linearGradient id="mist" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#F9F7ED" stop-opacity=".08"/><stop offset=".55" stop-color="#F9F7ED" stop-opacity=".76"/><stop offset="1" stop-color="#F9F7ED" stop-opacity=".08"/>
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="45%" r="56%">
+      <stop stop-color="#FFFDF4" stop-opacity=".72"/><stop offset="1" stop-color="#FFFDF4" stop-opacity="0"/>
     </radialGradient>
     <pattern id="grain" width="28" height="28" patternUnits="userSpaceOnUse">
-      <circle cx="5" cy="8" r=".6" fill="#8F826D" opacity=".12"/>
-      <circle cx="20" cy="19" r=".5" fill="#8F826D" opacity=".1"/>
+      <circle cx="5" cy="8" r=".55" fill="#897E69" opacity=".12"/>
+      <circle cx="20" cy="19" r=".45" fill="#897E69" opacity=".1"/>
     </pattern>
-    <clipPath id="gateInterior"><circle cx="930" cy="110" r="87"/></clipPath>
-    <clipPath id="canvas"><rect width="1200" height="220" rx="16"/></clipPath>
+    <clipPath id="portal"><circle cx="600" cy="108" r="91"/></clipPath>
+    <clipPath id="frame"><rect width="1200" height="220" rx="16"/></clipPath>
   </defs>
-  <g clip-path="url(#canvas)">
+
+  <g clip-path="url(#frame)">
     <rect width="1200" height="220" fill="url(#paper)"/>
-    <rect width="1200" height="220" fill="url(#glow)"/>
+    <rect width="1200" height="220" fill="url(#centerGlow)"/>
     <rect width="1200" height="220" fill="url(#grain)"/>
 
-    <path d="M690 24 Q840 3 1000 25 T1200 19" fill="none" stroke="#A8AD9B" stroke-width="7" stroke-opacity=".42"/>
-    <path d="M700 34 Q850 14 1000 35 T1200 29" fill="none" stroke="#F8F4E8" stroke-width="2" stroke-opacity=".8"/>
+    <path d="M0 18C130 8 263 22 375 15S468 17 516 37L500 52C382 39 242 47 0 57Z" fill="url(#wall)"/>
+    <path d="M0 18C130 8 263 22 375 15S468 17 516 37" fill="none" stroke="#8F9889" stroke-width="3" stroke-opacity=".55"/>
+    <path d="M684 37C734 17 805 17 900 19S1085 10 1200 18V57C1010 43 845 39 700 52Z" fill="url(#wall)"/>
+    <path d="M684 37C734 17 805 17 900 19S1085 10 1200 18" fill="none" stroke="#8F9889" stroke-width="3" stroke-opacity=".55"/>
+    <path d="M0 58H480M720 58H1200" stroke="#F8F5EA" stroke-width="2" stroke-opacity=".72"/>
 
-    <circle cx="930" cy="110" r="99" fill="url(#wall)" stroke="#A8AA9B" stroke-width="2"/>
-    <circle cx="930" cy="110" r="90" fill="#F4F1E6" stroke="#FAF7EC" stroke-width="3"/>
-    <g clip-path="url(#gateInterior)">
-      <rect x="842" y="22" width="176" height="176" fill="url(#sky)"/>
-      <circle cx="972" cy="62" r="15" fill="#D8C48E" opacity=".78"/>
-      <path d="M840 127L871 98L891 109L922 72L947 99L972 81L1020 122V164H840Z" fill="url(#far)"/>
-      <path d="M840 143L881 116L905 128L937 96L960 120L989 101L1020 136V176H840Z" fill="url(#mid)" opacity=".9"/>
-      <path d="M840 151C884 141 911 153 944 146S990 144 1020 151V205H840Z" fill="url(#lake)"/>
-      <path d="M840 157C884 149 927 164 970 155S1001 155 1020 158" fill="none" stroke="#F8F5EA" stroke-width="7" opacity=".75"/>
-      <g fill="none" stroke="#F8F5EA" stroke-width="1.5" opacity=".72">
-        <path d="M858 174H1004"/><path d="M880 186H982"/>
-      </g>
-      <g transform="translate(951 126)" stroke="#4B6252" stroke-width="2.2" fill="none">
-        <path d="M0 10L27 -4L54 10Z" fill="#526653"/>
-        <path d="M6 10V34M27 10V34M48 10V34"/>
-        <path d="M-4 35H58" stroke-width="3"/>
-        <path d="M-8 9L27 -12L62 9" stroke-width="3"/>
-      </g>
-      <g fill="#587B65">
-        <path d="M861 151Q848 126 837 133Q849 130 857 141Q852 126 840 119Q856 124 863 145Z"/>
-        <path d="M1004 145Q992 122 981 128Q993 125 1000 136Q995 121 983 114Q999 119 1006 139Z"/>
-      </g>
-      <path d="M842 135Q884 122 918 134T1018 130V160Q970 151 930 160T842 158Z" fill="#F8F5EA" opacity=".22"/>
-    </g>
-    <circle cx="930" cy="110" r="90" fill="none" stroke="#F9F6EC" stroke-width="3"/>
-    <circle cx="930" cy="110" r="98" fill="none" stroke="#A6AA99" stroke-width="2" stroke-opacity=".8"/>
+    <path d="M0 190C142 178 264 187 390 181S492 183 548 191L548 220H0Z" fill="#D6D7C8" opacity=".55"/>
+    <path d="M652 191C740 181 872 187 1000 181S1120 180 1200 188V220H652Z" fill="#D6D7C8" opacity=".55"/>
+    <path d="M0 195C140 186 255 197 375 190M825 191C950 184 1080 194 1200 187" fill="none" stroke="#AEB5A5" stroke-width="1.5" opacity=".55"/>
 
-    <g fill="none" stroke="#4E6B52" stroke-width="4" stroke-linecap="round">
-      <path d="M1138 7Q1116 67 1136 122T1145 218"/>
-      <path d="M1140 51Q1106 58 1082 83"/>
-      <path d="M1135 91Q1102 99 1081 125"/>
-      <path d="M1140 135Q1107 145 1092 168"/>
-      <path d="M1143 174Q1115 181 1102 201"/>
-    </g>
-    <g fill="#68866D">
-      <path d="M1117 58Q1080 29 1054 34Q1086 44 1117 58Z"/>
-      <path d="M1110 91Q1074 67 1047 73Q1078 81 1110 91Z"/>
-      <path d="M1113 128Q1078 104 1050 111Q1082 118 1113 128Z"/>
-      <path d="M1120 166Q1088 142 1061 150Q1090 157 1120 166Z"/>
-      <path d="M1126 198Q1096 177 1072 184Q1099 191 1126 198Z"/>
-    </g>
+    <circle cx="600" cy="108" r="105" fill="#A9AA9B" opacity=".28"/>
+    <circle cx="600" cy="108" r="101" fill="url(#stone)" stroke="#929B8C" stroke-width="2"/>
+    <circle cx="600" cy="108" r="95" fill="#F7F4E9" stroke="#F9F6EC" stroke-width="3"/>
+    <g clip-path="url(#portal)">
+      <rect x="505" y="13" width="190" height="190" fill="url(#sky)"/>
+      <circle cx="659" cy="52" r="13" fill="#DCC995" opacity=".84"/>
+      <circle cx="659" cy="52" r="20" fill="none" stroke="#C5B789" stroke-opacity=".34"/>
 
-    <path d="M188 0Q231 28 282 62Q306 78 337 91" fill="none" stroke="#705B49" stroke-width="3" stroke-linecap="round"/>
-    <path d="M234 28Q257 15 279 10M272 55Q299 39 321 40M302 73Q329 65 350 69" fill="none" stroke="#705B49" stroke-width="2"/>
+      <path d="M500 145L526 119L547 127L571 94L592 113L617 83L638 104L662 87L700 121V169H500Z" fill="url(#far)"/>
+      <path d="M500 157L531 137L552 144L580 119L603 139L627 119L650 135L700 151V180H500Z" fill="url(#mid)" opacity=".92"/>
+      <path d="M500 157C542 148 567 161 600 153S658 150 700 158V207H500Z" fill="url(#water)"/>
+      <path d="M500 164C540 155 573 170 611 161S668 162 700 165" fill="none" stroke="#F9F7EC" stroke-width="7" opacity=".72"/>
+      <path d="M516 183C554 177 586 187 622 181S674 181 695 185M535 194H670" fill="none" stroke="#F8F5EA" stroke-width="1.4" opacity=".8"/>
+
+      <g transform="translate(643 139)" stroke="#4B6251" stroke-width="2" fill="none">
+        <path d="M0 9L24 -4L48 9Z" fill="#536653"/>
+        <path d="M5 9V30M24 9V30M43 9V30"/>
+        <path d="M-4 31H52" stroke-width="3"/>
+        <path d="M-7 8L24 -12L55 8" stroke-width="3"/>
+      </g>
+      <g fill="#55765F">
+        <path d="M520 156Q510 132 499 137Q510 134 517 145Q512 130 501 124Q516 129 522 150Z"/>
+        <path d="M690 158Q680 135 670 139Q681 137 687 148Q682 133 671 127Q686 132 692 152Z"/>
+      </g>
+      <path d="M505 145C546 135 571 145 603 139S664 139 695 145V164C654 155 624 166 590 160S538 161 505 163Z" fill="url(#mist)"/>
+    </g>
+    <circle cx="600" cy="108" r="95" fill="none" stroke="#FAF7ED" stroke-width="3"/>
+    <circle cx="600" cy="108" r="101" fill="none" stroke="#A8AA9A" stroke-width="2"/>
+
+    <g fill="none" stroke="#4C7057" stroke-width="3.4" stroke-linecap="round">
+      <path d="M68 224C100 170 86 112 119 38"/>
+      <path d="M105 222C130 169 124 116 151 64"/>
+      <path d="M151 221C165 173 160 137 187 93"/>
+      <path d="M1127 220C1099 166 1114 111 1085 29"/>
+      <path d="M1093 221C1067 179 1073 135 1049 78"/>
+    </g>
+    <g fill="#6E9270">
+      <path d="M105 93Q66 67 43 74Q76 80 105 93Z"/><path d="M111 119Q70 98 48 107Q80 109 111 119Z"/>
+      <path d="M96 151Q58 131 35 141Q69 141 96 151Z"/><path d="M128 72Q94 47 72 53Q101 61 128 72Z"/>
+      <path d="M143 110Q110 87 87 94Q116 100 143 110Z"/><path d="M160 147Q126 125 105 132Q133 138 160 147Z"/>
+      <path d="M1090 91Q1127 63 1151 69Q1119 78 1090 91Z"/><path d="M1086 123Q1120 101 1145 108Q1113 113 1086 123Z"/>
+      <path d="M1103 157Q1138 136 1162 145Q1130 145 1103 157Z"/>
+    </g>
+    <g fill="none" stroke="#735B49" stroke-width="2.8" stroke-linecap="round">
+      <path d="M1035 -5C1065 40 1096 54 1139 73"/>
+      <path d="M1070 34L1044 58M1092 50L1080 83M1112 62L1130 43"/>
+    </g>
     <g fill="#B85F49">
-      <circle cx="230" cy="24" r="4.5"/><circle cx="248" cy="13" r="4"/>
-      <circle cx="270" cy="17" r="4.5"/><circle cx="284" cy="39" r="4"/>
-      <circle cx="306" cy="42" r="4.5"/><circle cx="320" cy="62" r="4"/>
-      <circle cx="339" cy="68" r="3.5"/>
+      <circle cx="1044" cy="56" r="4.2"/><circle cx="1052" cy="48" r="3.4"/><circle cx="1061" cy="57" r="4"/>
+      <circle cx="1080" cy="82" r="4.1"/><circle cx="1088" cy="74" r="3.4"/><circle cx="1097" cy="84" r="4"/>
+      <circle cx="1129" cy="43" r="4.2"/><circle cx="1138" cy="36" r="3.3"/><circle cx="1146" cy="46" r="4"/>
     </g>
-    <g fill="#D99A7C" opacity=".9">
-      <circle cx="239" cy="38" r="2.2"/><circle cx="276" cy="29" r="2.2"/>
-      <circle cx="310" cy="54" r="2.2"/><circle cx="329" cy="78" r="2"/>
+
+    <path d="M0 207C145 197 260 210 389 202S520 204 600 210S827 199 950 205S1090 198 1200 204V220H0Z" fill="url(#water)" opacity=".92"/>
+    <g fill="none" stroke="#F8F5EA" stroke-width="1.4" opacity=".78">
+      <path d="M20 211C122 205 191 216 280 210"/>
+      <path d="M904 212C1001 205 1080 215 1180 208"/>
+      <path d="M455 216H523M676 216H742"/>
+    </g>
+    <g fill="#A9A99A" stroke="#F0EEE2" stroke-width="1">
+      <path d="M448 198Q469 189 490 198Q471 207 448 198Z"/>
+      <path d="M493 210Q515 201 536 210Q515 219 493 210Z"/>
+      <path d="M671 203Q692 194 712 203Q692 212 671 203Z"/>
     </g>
 
     <rect x="18" y="14" width="1164" height="192" rx="12" fill="none" stroke="#AAB5A6" stroke-opacity=".34"/>
-    <text x="600" y="101" text-anchor="middle" fill="#2D453B" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="600" letter-spacing="3.8">ASHER TIAN</text>
-    <path d="M503 128H574M626 128H697" stroke="#71877C" stroke-opacity=".62" stroke-width="1"/>
-    <path d="M600 123L605 128L600 133L595 128Z" fill="#B65E49"/>
-    <text x="600" y="158" text-anchor="middle" fill="#718276" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="600" letter-spacing="3.1">SOFTWARE · DATA · TOOLING</text>
+    <text x="600" y="88" text-anchor="middle" fill="#2C443A" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="600" letter-spacing="2.2">ASHER TIAN</text>
+    <path d="M523 111H574M626 111H677" stroke="#7B8E7D" stroke-opacity=".62" stroke-width="1"/>
+    <path d="M600 106L605 111L600 116L595 111Z" fill="#B65E49"/>
+    <text x="600" y="133" text-anchor="middle" fill="#6D8173" font-family="Arial, Helvetica, sans-serif" font-size="8.8" font-weight="600" letter-spacing="1.1">SOFTWARE · DATA · TOOLING</text>
   </g>
 </svg>
