@@ -1,38 +1,69 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" role="img" aria-labelledby="title desc">
+  <title id="title">Asher Tian — Light landscape banner</title>
+  <desc id="desc">A centered personal identity over a quiet, layered blue-green mountain landscape with a restrained cinnabar accent.</desc>
   <defs>
-    <linearGradient id="paper" x1="0" y1="0" x2="1200" y2="220" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#F7F4EA"/>
-      <stop offset="1" stop-color="#EAE8DA"/>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#F6F3E9"/><stop offset="1" stop-color="#E9EBDD"/>
     </linearGradient>
-    <linearGradient id="far" x1="630" y1="36" x2="1110" y2="224" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#A9BDB0"/>
-      <stop offset="1" stop-color="#8CA79C"/>
+    <radialGradient id="centerGlow" cx="50%" cy="46%" r="58%">
+      <stop stop-color="#FFFDF4" stop-opacity=".62"/>
+      <stop offset="1" stop-color="#FFFDF4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="far" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#C7D5C8"/><stop offset="1" stop-color="#A7C0B3"/>
     </linearGradient>
-    <linearGradient id="mid" x1="740" y1="80" x2="1160" y2="220" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#6F9387"/>
-      <stop offset="1" stop-color="#4F756D"/>
+    <linearGradient id="mid" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#8EB3A3"/><stop offset="1" stop-color="#668F84"/>
     </linearGradient>
-    <linearGradient id="near" x1="790" y1="120" x2="1180" y2="220" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#456B65"/>
-      <stop offset="1" stop-color="#2D514F"/>
+    <linearGradient id="near" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#557D72"/><stop offset="1" stop-color="#355A55"/>
     </linearGradient>
+    <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#F8F5EA" stop-opacity="0"/>
+      <stop offset=".58" stop-color="#F8F5EA" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#F8F5EA" stop-opacity=".08"/>
+    </linearGradient>
+    <pattern id="grain" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="7" r=".55" fill="#8B806B" opacity=".13"/>
+      <circle cx="22" cy="19" r=".45" fill="#8B806B" opacity=".10"/>
+    </pattern>
     <clipPath id="clip"><rect width="1200" height="220" rx="16"/></clipPath>
   </defs>
   <g clip-path="url(#clip)">
     <rect width="1200" height="220" fill="url(#paper)"/>
-    <circle cx="1005" cy="66" r="35" fill="#D7C99F" opacity=".72"/>
-    <circle cx="1005" cy="66" r="49" stroke="#C8B98F" stroke-opacity=".42"/>
-    <path d="M480 220L646 116L714 143L835 48L947 140L1036 88L1200 185V220H480Z" fill="url(#far)" opacity=".76"/>
-    <path d="M620 220L786 104L850 145L963 72L1080 154L1140 124L1200 164V220H620Z" fill="url(#mid)" opacity=".92"/>
-    <path d="M760 220L916 135L974 166L1085 96L1200 182V220H760Z" fill="url(#near)"/>
-    <path d="M835 48L810 91L835 80L857 95L835 48Z" fill="#F7F4EA" fill-opacity=".76"/>
-    <path d="M963 72L938 111L963 99L985 114L963 72Z" fill="#F7F4EA" fill-opacity=".62"/>
-    <path d="M646 116L620 151L646 139L665 151L646 116Z" fill="#F7F4EA" fill-opacity=".52"/>
-    <path d="M680 183C760 167 818 184 886 174C958 163 1030 179 1092 166C1138 157 1172 163 1200 154" stroke="#E9E8D9" stroke-width="2" stroke-opacity=".7"/>
-    <path d="M720 201C805 190 870 204 945 193C1030 181 1102 198 1200 182" stroke="#D4DED0" stroke-width="1.5" stroke-opacity=".7"/>
-    <text x="94" y="132" fill="#263E3C" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="600" letter-spacing="1.5">ASHER TIAN</text>
-    <path d="M96 151H326" stroke="#B9C6B8" stroke-width="1"/>
-    <text x="98" y="177" fill="#718A7F" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="600" letter-spacing="2.6">SOFTWARE · DATA · TOOLING</text>
-    <path d="M0 219.5H1200" stroke="#C9C5B5" stroke-opacity=".65"/>
+    <rect width="1200" height="220" fill="url(#centerGlow)"/>
+    <rect width="1200" height="220" fill="url(#grain)"/>
+
+    <circle cx="1042" cy="59" r="27" fill="#D8C48E" opacity=".78"/>
+    <circle cx="1042" cy="59" r="39" fill="none" stroke="#BBAA7E" stroke-opacity=".42"/>
+    <path d="M1007 59H1077" stroke="#BBAA7E" stroke-opacity=".22" stroke-width="1"/>
+
+    <path d="M0 220V150L90 105L144 124L224 50L286 99L348 78L414 139L468 156L520 187V220Z" fill="url(#far)" opacity=".72"/>
+    <path d="M760 220V185L812 152L864 166L930 105L978 130L1040 57L1096 101L1150 76L1200 110V220Z" fill="url(#far)" opacity=".78"/>
+
+    <path d="M0 220V178L84 145L145 159L218 104L275 131L334 112L390 154L450 181L490 200V220Z" fill="url(#mid)" opacity=".88"/>
+    <path d="M790 220V193L850 168L898 179L960 140L1014 161L1072 117L1122 140L1174 126L1200 140V220Z" fill="url(#mid)" opacity=".94"/>
+
+    <path d="M0 220V194L82 176L140 190L208 158L263 178L328 169L380 193L420 205V220Z" fill="url(#near)"/>
+    <path d="M840 220V202L892 188L948 197L1010 174L1068 187L1124 169L1200 186V220Z" fill="url(#near)"/>
+
+    <path d="M0 177C128 163 204 183 322 172S467 178 548 184C635 190 714 177 792 180S1044 160 1200 173V220H0Z" fill="url(#haze)"/>
+    <path d="M0 185C144 174 246 191 372 182S562 185 672 190S902 183 1044 178S1140 180 1200 174" fill="none" stroke="#F8F5EA" stroke-width="2" stroke-opacity=".48"/>
+    <path d="M0 202C160 192 280 207 412 199S645 202 772 198S1030 192 1200 190" fill="none" stroke="#E9E7D9" stroke-width="1.4" stroke-opacity=".46"/>
+
+    <g fill="#345B50" opacity=".82">
+      <path d="M334 173q-13-19-26-14q11-3 22 6q-7-16-21-19q19 4 29 22q7-13 19-15q-11 6-14 17Z"/>
+      <path d="M896 180q-12-17-24-12q10-3 20 5q-6-14-18-17q16 3 25 20q6-11 17-13q-10 5-13 15Z"/>
+    </g>
+    <g stroke="#345B50" stroke-width="2" stroke-linecap="round" opacity=".72">
+      <path d="M339 175v-18M900 181v-16"/>
+    </g>
+
+    <rect x="18" y="14" width="1164" height="192" rx="12" fill="none" stroke="#AAB5A6" stroke-opacity=".32"/>
+
+    <text x="600" y="101" text-anchor="middle" fill="#263F3B" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="600" letter-spacing="3.8">ASHER TIAN</text>
+    <path d="M503 128H574M626 128H697" stroke="#71877C" stroke-opacity=".56" stroke-width="1"/>
+    <path d="M600 123L605 128L600 133L595 128Z" fill="#B65E49"/>
+    <text x="600" y="158" text-anchor="middle" fill="#71877C" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="600" letter-spacing="3.1">SOFTWARE · DATA · TOOLING</text>
   </g>
 </svg>
